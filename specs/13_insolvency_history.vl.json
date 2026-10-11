@@ -4,8 +4,8 @@
   "data": {
     "url": "data/insolvency_state_annual.csv"
   },
-  "width": 860,
-  "height": 280,
+  "width": 1005,
+  "height": 327,
   "transform": [
     {
       "filter": "datum.abbr == 'AUS'"

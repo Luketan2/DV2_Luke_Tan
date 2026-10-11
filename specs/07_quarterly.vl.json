@@ -12,8 +12,8 @@
   "spacing": 26,
   "vconcat": [
     {
-      "width": 860,
-      "height": 230,
+      "width": 940,
+      "height": 260,
       "encoding": {
         "x": {
           "field": "date",
@@ -250,8 +250,8 @@
       ]
     },
     {
-      "width": 860,
-      "height": 150,
+      "width": 940,
+      "height": 165,
       "transform": [
         {
           "fold": [

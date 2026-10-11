@@ -4,8 +4,8 @@
   "data": {
     "url": "data/industry_annual.csv"
   },
-  "width": 300,
-  "height": 455,
+  "width": 350,
+  "height": 500,
   "params": [
     {
       "name": "cyr",

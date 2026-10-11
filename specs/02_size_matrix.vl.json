@@ -4,8 +4,8 @@
   "data": {
     "url": "data/size_transitions.csv"
   },
-  "width": 380,
-  "height": 275,
+  "width": 445,
+  "height": 322,
   "transform": [
     {
       "joinaggregate": [

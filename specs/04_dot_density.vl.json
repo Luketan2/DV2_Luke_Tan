@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Dot density map: one dot = 1,000 businesses (June 2025), placed randomly inside the SA4 region where they are based and coloured by whether they employ staff. Sources: ABS 8165.0 data cube 8; ABS ASGS 2021 boundaries.",
-  "width": 600,
-  "height": 500,
+  "width": 700,
+  "height": 584,
   "projection": {
     "type": "conicEqualArea",
     "parallels": [

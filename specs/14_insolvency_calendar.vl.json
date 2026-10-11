@@ -2,8 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Calendar heatmap: companies entering insolvency for the first time in each month, July 2019 to August 2026. Rows are financial years, columns are months. Source: ASIC Insolvency statistics Series 1 & 2, Table 1 (published 6 Oct 2026; the latest two months are provisional).",
   "data": {"url": "data/insolvency_monthly.csv"},
-  "width": 760,
-  "height": 260,
+  "width": 890,
+  "height": 304,
   "encoding": {
     "x": {"field": "month", "type": "ordinal", "title": null, "sort": ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"], "axis": {"orient": "top", "labelAngle": 0, "domain": false, "ticks": false}},
     "y": {"field": "fy", "type": "ordinal", "title": null, "axis": {"domain": false, "ticks": false, "labelExpr": "datum.value == '2026-27' ? '2026-27 (so far)' : datum.value"}}

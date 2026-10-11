@@ -14,8 +14,8 @@
       }
     }
   },
-  "width": 520,
-  "height": 420,
+  "width": 608,
+  "height": 490,
   "transform": [
     {
       "calculate": "datum.share_insolv > datum.share_bus ? 'More failures than its size suggests' : 'Fewer failures than its size suggests'",

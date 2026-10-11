@@ -47,8 +47,8 @@
   "spacing": 14,
   "hconcat": [
     {
-      "width": 470,
-      "height": 430,
+      "width": 516,
+      "height": 503,
       "title": {
         "text": "Australia",
         "fontSize": 13,
@@ -210,8 +210,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 205,
-              "height": 135,
+              "width": 232,
+              "height": 158,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -325,8 +325,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 205,
-              "height": 135,
+              "width": 232,
+              "height": 158,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -444,8 +444,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 205,
-              "height": 135,
+              "width": 232,
+              "height": 158,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -559,8 +559,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 205,
-              "height": 135,
+              "width": 232,
+              "height": 158,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -678,8 +678,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 205,
-              "height": 105,
+              "width": 232,
+              "height": 123,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -793,8 +793,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 205,
-              "height": 105,
+              "width": 232,
+              "height": 123,
               "transform": [
                 {
                   "filter": "datum.industry == industry"

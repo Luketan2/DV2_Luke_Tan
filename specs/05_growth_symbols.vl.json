@@ -10,8 +10,8 @@
   },
   "hconcat": [
     {
-      "width": 520,
-      "height": 440,
+      "width": 608,
+      "height": 514,
       "title": {
         "text": "Australia",
         "fontSize": 13,
@@ -115,7 +115,7 @@
                 "direction": "horizontal",
                 "gradientLength": 220,
                 "title": "Growth, June 2023 to June 2025",
-                "labelExpr": "datum.label == 'null' || datum.label == '' ? '' : datum.label + '%'",
+                "labelExpr": "datum.label ? datum.label + '%' : ''",
                 "titleLimit": 260
               }
             },
@@ -165,8 +165,8 @@
             "fontSize": 12,
             "anchor": "start"
           },
-          "width": 340,
-          "height": 205,
+          "width": 397,
+          "height": 240,
           "projection": {
             "type": "mercator",
             "rotate": [
@@ -317,8 +317,8 @@
             "fontSize": 12,
             "anchor": "start"
           },
-          "width": 340,
-          "height": 205,
+          "width": 397,
+          "height": 240,
           "projection": {
             "type": "mercator",
             "rotate": [
