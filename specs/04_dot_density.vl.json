@@ -1,0 +1,191 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dot density map: one dot = 1,000 businesses (June 2025), placed randomly inside the SA4 region where they are based and coloured by whether they employ staff. Sources: ABS 8165.0 data cube 8; ABS ASGS 2021 boundaries.",
+  "width": 600,
+  "height": 500,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ebe7de",
+        "stroke": "#faf8f4",
+        "strokeWidth": 1.2
+      }
+    },
+    {
+      "data": {
+        "url": "data/dots.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 7,
+        "stroke": null
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "type",
+          "type": "nominal",
+          "title": "Each dot = 1,000 businesses",
+          "scale": {
+            "domain": [
+              "Non-employing",
+              "Employing"
+            ],
+            "range": [
+              "#eb6834",
+              "#2a78d6"
+            ]
+          },
+          "legend": {
+            "orient": "top-left",
+            "labelExpr": "datum.label == 'Non-employing' ? 'No employees' : 'Has employees'",
+            "symbolSize": 80,
+            "titleLimit": 260
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "typeSel",
+            "empty": true,
+            "value": 0.7
+          },
+          "value": 0.04
+        }
+      },
+      "params": [
+        {
+          "name": "typeSel",
+          "select": {
+            "type": "point",
+            "fields": [
+              "type"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "city": "Sydney",
+            "lon": 151.21,
+            "lat": -33.87
+          },
+          {
+            "city": "Melbourne",
+            "lon": 144.96,
+            "lat": -37.81
+          },
+          {
+            "city": "Brisbane",
+            "lon": 153.03,
+            "lat": -27.47
+          },
+          {
+            "city": "Perth",
+            "lon": 115.86,
+            "lat": -31.95
+          },
+          {
+            "city": "Adelaide",
+            "lon": 138.6,
+            "lat": -34.93
+          },
+          {
+            "city": "Hobart",
+            "lon": 147.33,
+            "lat": -42.88
+          },
+          {
+            "city": "Darwin",
+            "lon": 130.84,
+            "lat": -12.46
+          },
+          {
+            "city": "Canberra",
+            "lon": 149.13,
+            "lat": -35.28
+          }
+        ]
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "align": "left",
+            "dx": 8,
+            "stroke": "#faf8f4",
+            "strokeWidth": 3,
+            "strokeJoin": "round"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "city"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "align": "left",
+            "dx": 8,
+            "color": "#1d1d1b"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "city"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+industry,size,n
+Hospitality,Non-employing,35237
+Admin & support,Non-employing,78324
+Agriculture,Non-employing,127568
+Arts & recreation,Non-employing,25225
+Construction,Non-employing,278673
+Education,Non-employing,23344
+Utilities,Non-employing,4962
+Finance & insurance,Non-employing,95327
+Health care,Non-employing,130023
+Media & telco,Non-employing,15888
+Manufacturing,Non-employing,42927
+Mining,Non-employing,4990
+Other services,Non-employing,68234
+Professional services,Non-employing,202383
+Public admin,Non-employing,4272
+Real estate & rental,Non-employing,268296
+Retail,Non-employing,77551
+Transport & delivery,Non-employing,206780
+Wholesale,Non-employing,43076
+Hospitality,1-4,36661
+Admin & support,1-4,32152
+Agriculture,1-4,31611
+Arts & recreation,1-4,8953
+Construction,1-4,146731
+Education,1-4,11159
+Utilities,1-4,2282
+Finance & insurance,1-4,30764
+Health care,1-4,52455
+Media & telco,1-4,6608
+Manufacturing,1-4,25153
+Mining,1-4,2128
+Other services,1-4,50089
+Professional services,1-4,118267
+Public admin,1-4,2011
+Real estate & rental,1-4,29129
+Retail,1-4,46858
+Transport & delivery,1-4,32678
+Wholesale,1-4,22868
+Hospitality,5-19,30660
+Admin & support,5-19,10894
+Agriculture,5-19,9606
+Arts & recreation,5-19,3855
+Construction,5-19,30927
+Education,5-19,5857
+Utilities,5-19,1119
+Finance & insurance,5-19,5903
+Health care,5-19,22973
+Media & telco,5-19,1758
+Manufacturing,5-19,15454
+Mining,5-19,926
+Other services,5-19,14734
+Professional services,5-19,24836
+Public admin,5-19,909
+Real estate & rental,5-19,8781
+Retail,5-19,25194
+Transport & delivery,5-19,6550
+Wholesale,5-19,11425
+Hospitality,20-199,9872
+Admin & support,20-199,5061
+Agriculture,20-199,2044
+Arts & recreation,20-199,1244
+Construction,20-199,6149
+Education,20-199,2428
+Utilities,20-199,422
+Finance & insurance,20-199,1596
+Health care,20-199,7185
+Media & telco,20-199,677
+Manufacturing,20-199,6580
+Mining,20-199,428
+Other services,20-199,1387
+Professional services,20-199,7347
+Public admin,20-199,514
+Real estate & rental,20-199,1812
+Retail,20-199,6202
+Transport & delivery,20-199,2145
+Wholesale,20-199,4356
+Hospitality,200+,505
+Admin & support,200+,754
+Agriculture,200+,65
+Arts & recreation,200+,133
+Construction,200+,250
+Education,200+,316
+Utilities,200+,72
+Finance & insurance,200+,206
+Health care,200+,619
+Media & telco,200+,129
+Manufacturing,200+,533
+Mining,200+,173
+Other services,200+,72
+Professional services,200+,408
+Public admin,200+,66
+Real estate & rental,200+,112
+Retail,200+,391
+Transport & delivery,200+,275
+Wholesale,200+,354

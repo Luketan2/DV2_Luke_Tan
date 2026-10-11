@@ -1,0 +1,219 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Waterfall chart: how new businesses (entries) and closures (exits) add up to the net change in Australia's business count for a chosen financial year. Source: ABS 8165.0 Table 1 (2018-22 and 2022-26 releases).",
+  "data": {
+    "url": "data/national_annual.csv"
+  },
+  "width": 600,
+  "height": 300,
+  "params": [
+    {
+      "name": "yr",
+      "value": 2026,
+      "bind": {
+        "input": "select",
+        "name": "Financial year: ",
+        "options": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026
+        ],
+        "labels": [
+          "2018-19",
+          "2019-20",
+          "2020-21",
+          "2021-22",
+          "2022-23",
+          "2023-24",
+          "2024-25",
+          "2025-26"
+        ]
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.year == yr"
+    },
+    {
+      "fold": [
+        "births",
+        "entries_other",
+        "cancellations",
+        "exits_other",
+        "net"
+      ],
+      "as": [
+        "flow",
+        "value"
+      ]
+    },
+    {
+      "calculate": "indexof(['births','entries_other','cancellations','exits_other','net'], datum.flow)",
+      "as": "order"
+    },
+    {
+      "calculate": "['New ABNs', 'Other entries', 'ABNs cancelled', 'Other exits', 'Net change'][datum.order]",
+      "as": "step"
+    },
+    {
+      "calculate": "datum.flow == 'cancellations' || datum.flow == 'exits_other' ? -datum.value : datum.value",
+      "as": "amount"
+    },
+    {
+      "calculate": "datum.flow == 'net' ? 0 : datum.amount",
+      "as": "runAmount"
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "runAmount",
+          "as": "runEnd"
+        }
+      ],
+      "sort": [
+        {
+          "field": "order"
+        }
+      ],
+      "frame": [
+        null,
+        0
+      ]
+    },
+    {
+      "calculate": "datum.flow == 'net' ? 0 : datum.runEnd - datum.amount",
+      "as": "y0"
+    },
+    {
+      "calculate": "datum.flow == 'net' ? datum.amount : datum.runEnd",
+      "as": "y1"
+    },
+    {
+      "calculate": "datum.flow == 'net' ? 'Net' : datum.amount > 0 ? 'In' : 'Out'",
+      "as": "kind"
+    },
+    {
+      "calculate": "(datum.amount > 0 ? '+' : '−') + format(abs(datum.amount) / 1000, '.0f') + 'k'",
+      "as": "label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "step",
+      "type": "ordinal",
+      "sort": {
+        "field": "order"
+      },
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "labelLimit": 120,
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 11
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#c3c2b7"
+      },
+      "encoding": {
+        "y": {
+          "datum": 0
+        },
+        "x": null
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "width": {
+          "band": 0.62
+        },
+        "cornerRadius": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "title": "Businesses",
+          "scale": {
+            "domain": [
+              0,
+              500000
+            ]
+          },
+          "axis": {
+            "labelExpr": "format(datum.value / 1000, '.0f') + 'k'",
+            "tickCount": 6
+          }
+        },
+        "y2": {
+          "field": "y1"
+        },
+        "color": {
+          "field": "kind",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "In",
+              "Out",
+              "Net"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834",
+              "#1d1d1b"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "step",
+            "title": "Flow"
+          },
+          {
+            "field": "amount",
+            "title": "Businesses",
+            "format": "+,"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 12,
+        "fontWeight": 700,
+        "color": "#1d1d1b"
+      },
+      "transform": [
+        {
+          "calculate": "max(datum.y0, datum.y1)",
+          "as": "top"
+        }
+      ],
+      "encoding": {
+        "y": {
+          "field": "top",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

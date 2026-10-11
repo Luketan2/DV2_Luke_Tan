@@ -1,0 +1,172 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of the yearly percentage change in the number of businesses in each industry, 2018-19 to 2025-26. Blue = growth, red = decline. Source: ABS 8165.0 Table 1 (2018-22 and 2022-26 releases).",
+  "data": {
+    "url": "data/industry_annual.csv"
+  },
+  "width": 560,
+  "height": 475,
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "growth_pct",
+          "as": "avgGrowth"
+        }
+      ],
+      "groupby": [
+        "industry"
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "fy",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 11
+      }
+    },
+    "y": {
+      "field": "industry",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "avgGrowth",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 11.5,
+        "labelPadding": 6
+      }
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "cellHover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "industry"
+            ],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "stroke": "#faf8f4",
+        "strokeWidth": 2,
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "color": {
+          "field": "growth_pct",
+          "type": "quantitative",
+          "title": "Change in number of businesses (%)",
+          "scale": {
+            "domain": [
+              -4,
+              0,
+              4,
+              8
+            ],
+            "range": [
+              "#c23b3a",
+              "#f0efec",
+              "#6da7ec",
+              "#104281"
+            ],
+            "clamp": true,
+            "interpolate": "rgb"
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 260,
+            "titleLimit": 300,
+            "values": [
+              -4,
+              -2,
+              0,
+              2,
+              4,
+              6,
+              8
+            ],
+            "labelExpr": "datum.value == 8 ? '8+' : datum.value == -4 ? '−4 or less' : datum.label"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "cellHover",
+            "empty": true,
+            "value": 1
+          },
+          "value": 0.45
+        },
+        "tooltip": [
+          {
+            "field": "industry",
+            "title": "Industry"
+          },
+          {
+            "field": "fy",
+            "title": "Financial year"
+          },
+          {
+            "field": "growth_pct",
+            "title": "Change (%)",
+            "format": "+.1f"
+          },
+          {
+            "field": "net",
+            "title": "Net change",
+            "format": "+,"
+          },
+          {
+            "field": "end",
+            "title": "Businesses at end of year",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "abs(datum.growth_pct) >= 6 || datum.growth_pct < -1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10.5,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "growth_pct",
+          "format": "+.1f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.growth_pct > 5",
+            "value": "#ffffff"
+          },
+          "value": "#1d1d1b"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,469 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map: circles sized by the number of businesses each SA4 region added between June 2023 and June 2025, coloured by percentage growth. Insets zoom into Sydney and Melbourne. Sources: ABS 8165.0 data cube 8 (Tables 1 and 3); ABS ASGS 2021 boundaries.",
+  "spacing": 16,
+  "resolve": {
+    "scale": {
+      "color": "shared",
+      "size": "shared"
+    }
+  },
+  "hconcat": [
+    {
+      "width": 520,
+      "height": 440,
+      "title": {
+        "text": "Australia",
+        "fontSize": 13,
+        "anchor": "start"
+      },
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -18,
+          -36
+        ],
+        "rotate": [
+          -132,
+          0
+        ]
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "data/states.geojson",
+            "format": {
+              "type": "json",
+              "property": "features"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "#ebe7de",
+            "stroke": "#faf8f4",
+            "strokeWidth": 1.2
+          }
+        },
+        {
+          "data": {
+            "url": "data/sa4.csv"
+          },
+          "transform": [
+            {
+              "filter": "datum.growth_2y > 0"
+            }
+          ],
+          "mark": {
+            "type": "circle",
+            "stroke": "#faf8f4",
+            "strokeWidth": 1,
+            "opacity": 0.88
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "growth_2y",
+              "type": "quantitative",
+              "title": "Businesses added",
+              "scale": {
+                "range": [
+                  8,
+                  900
+                ]
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "horizontal",
+                "format": ",.0f",
+                "values": [
+                  1000,
+                  5000,
+                  10000
+                ],
+                "symbolFillColor": "#c3c2b7",
+                "symbolStrokeWidth": 0,
+                "title": "Businesses added"
+              }
+            },
+            "color": {
+              "field": "growth_2y_pct",
+              "type": "quantitative",
+              "title": "Growth, Jun 2023 to Jun 2025",
+              "scale": {
+                "type": "threshold",
+                "domain": [
+                  3,
+                  6,
+                  9
+                ],
+                "range": [
+                  "#b7d3f6",
+                  "#6da7ec",
+                  "#256abf",
+                  "#0d366b"
+                ]
+              },
+              "legend": {
+                "orient": "bottom",
+                "direction": "horizontal",
+                "gradientLength": 220,
+                "title": "Growth, June 2023 to June 2025",
+                "labelExpr": "datum.label == 'null' || datum.label == '' ? '' : datum.label + '%'",
+                "titleLimit": 260
+              }
+            },
+            "order": {
+              "field": "growth_2y",
+              "sort": "descending"
+            },
+            "tooltip": [
+              {
+                "field": "sa4_name",
+                "title": "Region (SA4)"
+              },
+              {
+                "field": "total2023",
+                "title": "Businesses, June 2023",
+                "format": ","
+              },
+              {
+                "field": "total",
+                "title": "Businesses, June 2025",
+                "format": ","
+              },
+              {
+                "field": "growth_2y",
+                "title": "Added",
+                "format": "+,"
+              },
+              {
+                "field": "growth_2y_pct",
+                "title": "Growth (%)",
+                "format": ".1f"
+              },
+              {
+                "field": "top_industry",
+                "title": "Largest industry"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "vconcat": [
+        {
+          "title": {
+            "text": "Greater Sydney",
+            "fontSize": 12,
+            "anchor": "start"
+          },
+          "width": 340,
+          "height": 205,
+          "projection": {
+            "type": "mercator",
+            "rotate": [
+              -151.0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/sa4.geojson",
+                "format": {
+                  "type": "json",
+                  "property": "features"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.gcc == 'Greater Sydney'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#ebe7de",
+                "stroke": "#faf8f4",
+                "strokeWidth": 1
+              }
+            },
+            {
+              "data": {
+                "url": "data/sa4.csv"
+              },
+              "transform": [
+                {
+                  "filter": "datum.gcc == 'Greater Sydney'"
+                }
+              ],
+              "mark": {
+                "type": "circle",
+                "stroke": "#faf8f4",
+                "strokeWidth": 1,
+                "opacity": 0.9
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "size": {
+                  "field": "growth_2y",
+                  "type": "quantitative",
+                  "scale": {
+                    "range": [
+                      8,
+                      900
+                    ]
+                  },
+                  "legend": null
+                },
+                "color": {
+                  "field": "growth_2y_pct",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [
+                      3,
+                      6,
+                      9
+                    ],
+                    "range": [
+                      "#b7d3f6",
+                      "#6da7ec",
+                      "#256abf",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": null
+                },
+                "order": {
+                  "field": "growth_2y",
+                  "sort": "descending"
+                },
+                "tooltip": [
+                  {
+                    "field": "sa4_name",
+                    "title": "Region (SA4)"
+                  },
+                  {
+                    "field": "growth_2y",
+                    "title": "Added",
+                    "format": "+,"
+                  },
+                  {
+                    "field": "growth_2y_pct",
+                    "title": "Growth (%)",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "top_industry",
+                    "title": "Largest industry"
+                  }
+                ]
+              }
+            },
+            {
+              "data": {
+                "url": "data/sa4.csv"
+              },
+              "transform": [
+                {
+                  "filter": "datum.sa4 == 116 || datum.sa4 == 102"
+                },
+                {
+                  "calculate": "replace(datum.sa4_name, 'Sydney - ', '') + ' ' + format(datum.growth_2y_pct, '+.1f') + '%'",
+                  "as": "lab"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "fontSize": 10.5,
+                "fontWeight": 600,
+                "dy": -14,
+                "color": "#1d1d1b"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "lab"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "text": "Greater Melbourne",
+            "fontSize": 12,
+            "anchor": "start"
+          },
+          "width": 340,
+          "height": 205,
+          "projection": {
+            "type": "mercator",
+            "rotate": [
+              -145.0,
+              0
+            ]
+          },
+          "layer": [
+            {
+              "data": {
+                "url": "data/sa4.geojson",
+                "format": {
+                  "type": "json",
+                  "property": "features"
+                }
+              },
+              "transform": [
+                {
+                  "filter": "datum.properties.gcc == 'Greater Melbourne'"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "fill": "#ebe7de",
+                "stroke": "#faf8f4",
+                "strokeWidth": 1
+              }
+            },
+            {
+              "data": {
+                "url": "data/sa4.csv"
+              },
+              "transform": [
+                {
+                  "filter": "datum.gcc == 'Greater Melbourne'"
+                }
+              ],
+              "mark": {
+                "type": "circle",
+                "stroke": "#faf8f4",
+                "strokeWidth": 1,
+                "opacity": 0.9
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "size": {
+                  "field": "growth_2y",
+                  "type": "quantitative",
+                  "scale": {
+                    "range": [
+                      8,
+                      900
+                    ]
+                  },
+                  "legend": null
+                },
+                "color": {
+                  "field": "growth_2y_pct",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [
+                      3,
+                      6,
+                      9
+                    ],
+                    "range": [
+                      "#b7d3f6",
+                      "#6da7ec",
+                      "#256abf",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": null
+                },
+                "order": {
+                  "field": "growth_2y",
+                  "sort": "descending"
+                },
+                "tooltip": [
+                  {
+                    "field": "sa4_name",
+                    "title": "Region (SA4)"
+                  },
+                  {
+                    "field": "growth_2y",
+                    "title": "Added",
+                    "format": "+,"
+                  },
+                  {
+                    "field": "growth_2y_pct",
+                    "title": "Growth (%)",
+                    "format": ".1f"
+                  },
+                  {
+                    "field": "top_industry",
+                    "title": "Largest industry"
+                  }
+                ]
+              }
+            },
+            {
+              "data": {
+                "url": "data/sa4.csv"
+              },
+              "transform": [
+                {
+                  "filter": "datum.sa4 == 213 || datum.sa4 == 214"
+                },
+                {
+                  "calculate": "replace(datum.sa4_name, 'Melbourne - ', '') + ' ' + format(datum.growth_2y_pct, '+.1f') + '%'",
+                  "as": "lab"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "fontSize": 10.5,
+                "fontWeight": 600,
+                "dy": -14,
+                "color": "#1d1d1b"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "lon",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "lat",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "field": "lab"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+sa4,sa4_name,erp2025,area_km2,total,nonemp,e1_4,e5_19,e20_199,e200,total2023,top_industry,top_share,employing,per_1000,growth_2y_pct,growth_2y,state_code,lon,lat,region_type,state,gcc
+101,Capital Region,248376,51896.2,24306,14416,6951,2418,503,6,23868,Construction,21.3,9878,97.9,1.84,438,1,149.7,-35.696,Regional,New South Wales,Rest of NSW
+102,Central Coast,357816,1681.0,27127,14949,8930,2643,583,12,26300,Construction,24.1,12168,75.8,3.14,827,1,151.267,-33.307,Capital city,New South Wales,Greater Sydney
+103,Central West,216979,70297.3,22457,13942,5902,2136,442,24,22249,Agriculture,29.9,8504,103.5,0.93,208,1,148.609,-33.048,Regional,New South Wales,Rest of NSW
+104,Coffs Harbour - Grafton,152331,13229.699999999999,12468,7447,3452,1276,270,6,12200,Construction,19.6,5004,81.8,2.2,268,1,152.753,-29.768,Regional,New South Wales,Rest of NSW
+105,Far West and Orana,118372,339355.5,12762,8166,3166,1193,239,6,12640,Agriculture,34.7,4604,107.8,0.97,122,1,145.443,-31.183,Regional,New South Wales,Rest of NSW
+106,Hunter Valley exc Newcastle,316250,21491.4,21841,12414,6463,2348,622,15,20936,Construction,18.2,9448,69.1,4.32,905,1,151.053,-32.346,Regional,New South Wales,Rest of NSW
+107,Illawarra,330469,1539.3999999999999,22916,12902,7109,2330,550,17,21620,Construction,21.3,10006,69.3,5.99,1296,1,150.722,-34.443,Regional,New South Wales,Rest of NSW
+108,Mid North Coast,239566,18851.7,18853,11620,5045,1795,373,12,18466,Construction,20.8,7225,78.7,2.1,387,1,152.321,-31.558,Regional,New South Wales,Rest of NSW
+109,Murray,130078,97796.6,13746,8525,3491,1377,330,3,13306,Agriculture,25.5,5201,105.7,3.31,440,1,143.788,-34.439,Regional,New South Wales,Rest of NSW
+110,New England and North West,191401,99139.9,21481,14049,5230,1871,367,12,21223,Agriculture,37.6,7480,112.2,1.22,258,1,150.681,-30.054,Regional,New South Wales,Rest of NSW
+111,Newcastle and Lake Macquarie,412359,870.6,31778,17745,9503,3489,968,15,30001,Construction,19.9,13975,77.1,5.92,1777,1,151.517,-32.991,Regional,New South Wales,Rest of NSW
+112,Richmond - Tweed,265824,10271.1,28223,17972,7127,2503,591,12,27109,Construction,19.0,10233,106.2,4.11,1114,1,153.049,-28.749,Regional,New South Wales,Rest of NSW
+113,Riverina,166404,56984.9,17607,10701,4713,1716,428,9,17297,Agriculture,29.9,6866,105.8,1.79,310,1,146.715,-34.739,Regional,New South Wales,Rest of NSW
+114,Southern Highlands and Shoalhaven,165285,6705.1,14925,8530,4560,1513,324,9,14566,Construction,22.1,6406,90.3,2.46,359,1,150.409,-34.89,Regional,New South Wales,Rest of NSW
+115,Sydney - Baulkham Hills and Hawkesbury,295667,3251.4999999999995,36121,20771,11720,2878,727,41,33446,Construction,19.4,15366,122.2,8.0,2675,1,150.761,-33.385,Capital city,New South Wales,Greater Sydney
+116,Sydney - Blacktown,452374,240.9,36452,23244,10123,2330,718,27,32002,Transport & delivery,23.4,13198,80.6,13.91,4450,1,150.862,-33.738,Capital city,New South Wales,Greater Sydney
+117,Sydney - City and Inner South,369674,66.1,97689,61558,22725,9035,4027,321,91850,Professional services,21.1,36108,264.3,6.36,5839,1,151.175,-33.919,Capital city,New South Wales,Greater Sydney
+118,Sydney - Eastern Suburbs,280449,57.7,36979,24569,9460,2287,615,33,35970,Professional services,20.4,12395,131.9,2.81,1009,1,151.237,-33.917,Capital city,New South Wales,Greater Sydney
+119,Sydney - Inner South West,642157,163.9,70569,45515,19859,4173,965,45,66352,Construction,20.3,25042,109.9,6.36,4217,1,151.063,-33.944,Capital city,New South Wales,Greater Sydney
+120,Sydney - Inner West,324297,64.5,38948,24939,10623,2683,660,51,37575,Professional services,17.3,14017,120.1,3.65,1373,1,151.102,-33.87,Capital city,New South Wales,Greater Sydney
+121,Sydney - North Sydney and Hornsby,447312,275.4,61627,38650,16555,4700,1532,113,59966,Professional services,23.9,22900,137.8,2.77,1661,1,151.124,-33.684,Capital city,New South Wales,Greater Sydney
+122,Sydney - Northern Beaches,272656,254.1,33647,19625,10477,2863,671,36,32926,Professional services,22.0,14047,123.4,2.19,721,1,151.244,-33.698,Capital city,New South Wales,Greater Sydney
+123,Sydney - Outer South West,323758,1277.1,24311,13875,7842,2060,524,21,22772,Construction,23.1,10447,75.1,6.76,1539,1,150.68,-34.136,Capital city,New South Wales,Greater Sydney
+124,Sydney - Outer West and Blue Mountains,350649,3968.1000000000004,26102,14641,8577,2320,529,21,25089,Construction,23.0,11447,74.4,4.04,1013,1,150.369,-33.897,Capital city,New South Wales,Greater Sydney
+125,Sydney - Parramatta,535540,162.9,64403,41761,17600,3795,1135,76,58919,Construction,22.0,22606,120.3,9.31,5484,1,150.995,-33.828,Capital city,New South Wales,Greater Sydney
+126,Sydney - Ryde,218606,69.4,23632,14995,6600,1512,496,35,22168,Professional services,18.5,8643,108.1,6.6,1464,1,151.102,-33.782,Capital city,New South Wales,Greater Sydney
+127,Sydney - South West,527701,540.4,45484,26222,15268,3156,865,48,41446,Construction,22.5,19337,86.2,9.74,4038,1,150.797,-33.936,Capital city,New South Wales,Greater Sydney
+128,Sydney - Sutherland,240174,295.90000000000003,23514,13302,7621,2126,471,21,22713,Construction,21.7,10239,97.9,3.53,801,1,151.043,-34.075,Capital city,New South Wales,Greater Sydney
+201,Ballarat,184285,10287.5,16062,10085,4085,1453,346,15,15738,Construction,19.5,5899,87.2,2.06,324,2,143.823,-37.344,Regional,Victoria,Rest of Vic.
+202,Bendigo,173769,11841.900000000001,14022,8745,3488,1429,345,9,13755,Construction,19.2,5271,80.7,1.94,267,2,144.013,-36.682,Regional,Victoria,Rest of Vic.
+203,Geelong,355990,4428.8,30027,19309,7355,2655,688,41,28349,Construction,21.1,10739,84.3,5.92,1678,2,144.319,-38.18,Regional,Victoria,Rest of Vic.
+204,Hume,189765,34006.4,19784,12859,4818,1727,387,12,19654,Agriculture,24.3,6944,104.3,0.66,130,2,146.086,-36.879,Regional,Victoria,Rest of Vic.
+205,Latrobe - Gippsland,313733,41553.0,27697,17725,6867,2503,554,27,27402,Agriculture,22.3,9951,88.3,1.08,295,2,146.911,-37.874,Regional,Victoria,Rest of Vic.
+206,Melbourne - Inner,713493,142.3,120007,79341,25392,10664,4346,300,115941,Professional services,20.9,40702,168.2,3.51,4066,2,144.961,-37.812,Capital city,Victoria,Greater Melbourne
+207,Melbourne - Inner East,405012,146.6,52333,35889,12044,3471,837,64,50241,Professional services,16.9,16416,129.2,4.16,2092,2,145.088,-37.805,Capital city,Victoria,Greater Melbourne
+208,Melbourne - Inner South,454338,161.5,52724,34989,12497,4026,1113,55,51805,Professional services,18.6,17691,116.0,1.77,919,2,145.061,-37.961,Capital city,Victoria,Greater Melbourne
+209,Melbourne - North East,596605,1851.0,53387,36414,12327,3650,999,46,50301,Construction,21.1,17022,89.5,6.14,3086,2,145.268,-37.524,Capital city,Victoria,Greater Melbourne
+210,Melbourne - North West,473116,1619.7,46702,32710,9943,3034,957,56,43602,Construction,21.5,13990,98.7,7.11,3100,2,144.681,-37.476,Capital city,Victoria,Greater Melbourne
+211,Melbourne - Outer East,536368,1878.8,48909,29995,13428,4337,1105,48,48424,Construction,23.0,18918,91.2,1.0,485,2,145.506,-37.751,Capital city,Victoria,Greater Melbourne
+212,Melbourne - South East,958772,1922.6,99868,68750,22084,6771,2223,102,92126,Construction,19.0,31180,104.2,8.4,7742,2,145.491,-38.093,Capital city,Victoria,Greater Melbourne
+213,Melbourne - West,980300,1416.4,93007,68131,18446,5024,1389,61,83072,Transport & delivery,26.3,24920,94.9,11.96,9935,2,144.668,-37.775,Capital city,Victoria,Greater Melbourne
+214,Mornington Peninsula,317586,853.8,28700,17525,7957,2635,564,36,28558,Construction,26.2,11192,90.4,0.5,142,2,145.107,-38.283,Capital city,Victoria,Greater Melbourne
+215,North West,153762,78073.1,17394,10639,4612,1774,355,12,17274,Agriculture,35.8,6753,113.1,0.69,120,2,142.346,-35.909,Regional,Victoria,Rest of Vic.
+216,Shepparton,138645,10933.9,15017,9562,3712,1385,327,15,14938,Agriculture,24.2,5439,108.3,0.53,79,2,145.156,-36.278,Regional,Victoria,Rest of Vic.
+217,Warrnambool and South West,128320,26379.0,14523,9127,3591,1479,305,3,14409,Agriculture,35.9,5378,113.2,0.79,114,2,142.295,-37.972,Regional,Victoria,Rest of Vic.
+301,Brisbane - East,258510,653.0000000000001,21102,12194,6210,2114,555,26,20325,Construction,22.2,8905,81.6,3.82,777,3,153.205,-27.526,Capital city,Queensland,Greater Brisbane
+302,Brisbane - North,244037,186.9,19536,12005,5018,1843,675,33,18982,Construction,15.8,7569,80.1,2.92,554,3,153.068,-27.362,Capital city,Queensland,Greater Brisbane
+303,Brisbane - South,412436,265.4,42832,27403,10610,3755,1006,46,40239,Professional services,13.3,15417,103.9,6.44,2593,3,153.088,-27.559,Capital city,Queensland,Greater Brisbane
+304,Brisbane - West,204443,269.7,15790,9788,4503,1215,307,3,15313,Professional services,23.4,6028,77.2,3.12,477,3,152.931,-27.498,Capital city,Queensland,Greater Brisbane
+305,Brisbane Inner City,335571,82.0,51783,32189,12380,5033,1979,137,49637,Professional services,22.5,19529,154.3,4.32,2146,3,153.006,-27.448,Capital city,Queensland,Greater Brisbane
+306,Cairns,271408,21337.6,24328,14649,6210,2715,750,18,23788,Construction,17.3,9693,89.6,2.27,540,3,145.694,-17.24,Regional,Queensland,Rest of Qld
+307,Darling Downs - Maranoa,134169,166346.4,20289,14347,4100,1483,337,9,19648,Agriculture,46.0,5929,151.2,3.26,641,3,149.622,-27.034,Regional,Queensland,Rest of Qld
+308,Central Queensland,244220,117588.2,19595,12257,4849,1969,479,27,18868,Agriculture,25.2,7324,80.2,3.85,727,3,149.303,-24.046,Regional,Queensland,Rest of Qld
+309,Gold Coast,708085,1857.8999999999999,85132,53587,22202,7205,2086,118,79812,Construction,18.6,31611,120.2,6.67,5320,3,153.286,-28.025,Regional,Queensland,Rest of Qld
+310,Ipswich,419370,6681.400000000001,25832,16603,6479,2069,609,15,23469,Construction,17.0,9172,61.6,10.07,2363,3,152.609,-27.665,Capital city,Queensland,Greater Brisbane
+311,Logan - Beaudesert,420157,2586.2,31112,19587,8256,2559,719,27,27940,Construction,24.1,11561,74.0,11.35,3172,3,152.967,-27.976,Capital city,Queensland,Greater Brisbane
+312,Mackay - Isaac - Whitsunday,193813,90140.40000000001,17507,10246,4860,1792,609,15,16799,Agriculture,19.9,7276,90.3,4.21,708,3,148.138,-21.631,Regional,Queensland,Rest of Qld
+313,Moreton Bay - North,300041,4344.6,17595,10331,5196,1646,413,30,16629,Construction,25.2,7285,58.6,5.81,966,3,152.515,-26.858,Capital city,Queensland,Greater Brisbane
+314,Moreton Bay - South,238959,773.4,16683,9887,4819,1592,377,12,15803,Construction,19.8,6800,69.8,5.57,880,3,152.875,-27.254,Capital city,Queensland,Greater Brisbane
+315,Queensland - Outback,82563,1183175.1,7845,4921,1944,785,157,0,7667,Agriculture,39.1,2886,95.0,2.32,178,3,141.2,-19.844,Regional,Queensland,Rest of Qld
+316,Sunshine Coast,441508,3085.8,47339,28589,13169,4442,1160,57,44647,Construction,20.9,18828,107.2,6.03,2692,3,152.903,-26.561,Regional,Queensland,Rest of Qld
+317,Toowoomba,175707,2258.7,15025,9340,3654,1574,448,21,14520,Construction,17.8,5697,85.5,3.48,505,3,152.046,-27.66,Regional,Queensland,Rest of Qld
+318,Townsville,249097,80036.1,17703,10266,4715,2117,574,18,17260,Construction,17.0,7424,71.1,2.57,443,3,146.074,-20.209,Regional,Queensland,Rest of Qld
+319,Wide Bay,335670,48502.5,25104,15752,6212,2554,598,12,23800,Agriculture,23.1,9376,74.8,5.48,1304,3,151.78,-25.67,Regional,Queensland,Rest of Qld
+401,Adelaide - Central and Hills,338950,1497.3,49883,34059,9914,4458,1383,75,47422,Real estate & rental,17.5,15830,147.2,5.19,2461,4,138.801,-34.962,Capital city,South Australia,Greater Adelaide
+402,Adelaide - North,492185,940.1,32052,22730,6263,2360,640,45,28277,Construction,21.6,9308,65.1,13.35,3775,4,138.652,-34.694,Capital city,South Australia,Greater Adelaide
+403,Adelaide - South,396764,663.0,25734,17029,5794,2366,562,21,24601,Construction,21.6,8743,64.9,4.61,1133,4,138.591,-35.154,Capital city,South Australia,Greater Adelaide
+404,Adelaide - West,263116,159.5,22575,15084,4415,2291,770,42,21430,Construction,17.2,7518,85.8,5.34,1145,4,138.53,-34.87,Capital city,South Australia,Greater Adelaide
+405,Barossa - Yorke - Mid North,120651,37716.4,11631,7528,2804,1089,206,9,11415,Agriculture,33.5,4108,96.4,1.89,216,4,138.559,-33.71,Regional,South Australia,Rest of SA
+406,South Australia - Outback,85925,877772.5,6532,4029,1605,759,135,6,6494,Agriculture,30.1,2505,76.0,0.59,38,4,135.001,-30.489,Regional,South Australia,Rest of SA
+407,South Australia - South East,205074,65482.4,19570,12642,4544,1945,383,12,19295,Agriculture,33.4,6884,95.4,1.43,275,4,140.19,-35.931,Regional,South Australia,Rest of SA
+501,Bunbury,210962,24802.6,17943,11294,4229,1931,549,15,17006,Construction,19.7,6724,85.1,5.51,937,5,115.882,-33.908,Regional,Western Australia,Rest of WA
+502,Mandurah,127502,1032.8,6393,3879,1704,637,186,0,6042,Construction,23.5,2527,50.1,5.81,351,5,115.884,-32.623,Capital city,Western Australia,Greater Perth
+503,Perth - Inner,212390,92.4,39428,25635,8428,3842,1392,105,37582,Professional services,20.7,13767,185.6,4.91,1846,5,115.797,-31.966,Capital city,Western Australia,Greater Perth
+504,Perth - North East,324644,1762.4,25048,16190,5887,2321,648,33,22707,Construction,19.2,8889,77.2,10.31,2341,5,116.118,-31.83,Capital city,Western Australia,Greater Perth
+505,Perth - North West,657092,884.0,53639,35318,12621,4378,1264,36,49389,Construction,23.4,18299,81.6,8.61,4250,5,115.792,-31.694,Capital city,Western Australia,Greater Perth
+506,Perth - South East,611748,2023.9,52912,36113,11048,4261,1457,72,46552,Transport & delivery,21.1,16838,86.5,13.66,6360,5,116.113,-32.196,Capital city,Western Australia,Greater Perth
+507,Perth - South West,519389,620.7,36836,23461,8593,3582,1153,30,34452,Construction,17.3,13358,70.9,6.92,2384,5,115.821,-32.23,Capital city,Western Australia,Greater Perth
+509,Western Australia - Wheat Belt,149617,197345.6,17437,11016,4543,1574,302,0,16965,Agriculture,37.8,6419,116.5,2.78,472,5,118.129,-32.375,Regional,Western Australia,Rest of WA
+510,Western Australia - Outback (North),102732,926023.2,5087,2832,1207,725,263,12,4785,Construction,20.4,2207,49.5,6.31,302,5,125.328,-18.814,Regional,Western Australia,Rest of WA
+511,Western Australia - Outback (South),128306,1372044.8,10588,6098,2739,1368,338,18,10295,Agriculture,20.9,4463,82.5,2.85,293,5,121.587,-28.099,Regional,Western Australia,Rest of WA
+601,Hobart,255250,1695.1999999999998,19326,11982,4606,2166,599,30,18880,Construction,18.2,7401,75.7,2.36,446,6,147.245,-42.888,Capital city,Tasmania,Greater Hobart
+602,Launceston and North East,156393,19975.3,12991,8022,3202,1406,353,12,12793,Construction,17.7,4973,83.1,1.55,198,6,147.384,-41.509,Regional,Tasmania,Rest of Tas.
+603,South East,44527,23822.3,3480,2195,841,342,93,3,3420,Agriculture,25.4,1279,78.2,1.75,60,6,146.605,-42.672,Regional,Tasmania,Rest of Tas.
+604,West and North West,120091,22524.699999999997,8352,4897,2114,1063,268,9,8244,Agriculture,22.1,3454,69.5,1.31,108,6,145.627,-41.982,Regional,Tasmania,Rest of Tas.
+701,Darwin,159284,3167.7,12568,7608,3072,1458,457,18,11882,Construction,18.5,5005,78.9,5.77,686,7,131.162,-12.502,Capital city,Northern Territory,Greater Darwin
+702,Northern Territory - Outback,105272,1344966.7999999998,3984,2157,1004,595,208,3,3919,Construction,17.8,1810,37.8,1.66,65,7,133.498,-18.556,Regional,Northern Territory,Rest of NT
+801,Australian Capital Territory,484630,2358.2,36910,21613,10637,3575,1016,45,34980,Professional services,19.9,15273,76.2,5.52,1930,8,148.956,-35.523,Capital city,Australian Capital Territory,Australian Capital Territory

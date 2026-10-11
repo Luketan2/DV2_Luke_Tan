@@ -1,0 +1,212 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Scatterplot comparing each industry's share of all businesses (ABS) with its share of companies entering insolvency (ASIC), 2025-26. Industries above the diagonal line make up more of the failures than their size alone would suggest. Sources: ABS 8165.0 Table 1; ASIC Insolvency statistics Table 1.2.",
+  "data": {
+    "url": "data/insolvency_share_2026.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "share_insolv": "number",
+        "share_bus": "number",
+        "n": "number",
+        "end": "number",
+        "per_10k": "number"
+      }
+    }
+  },
+  "width": 520,
+  "height": 420,
+  "transform": [
+    {
+      "calculate": "datum.share_insolv > datum.share_bus ? 'More failures than its size suggests' : 'Fewer failures than its size suggests'",
+      "as": "side"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "share_bus",
+      "type": "quantitative",
+      "title": "Share of all businesses (%)",
+      "scale": {
+        "domain": [
+          0,
+          26
+        ]
+      },
+      "axis": {
+        "tickCount": 6
+      }
+    },
+    "y": {
+      "field": "share_insolv",
+      "type": "quantitative",
+      "title": "Share of companies entering insolvency (%)",
+      "scale": {
+        "domain": [
+          0,
+          26
+        ]
+      },
+      "axis": {
+        "tickCount": 6
+      }
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "a": 0,
+            "b": 0
+          },
+          {
+            "a": 26,
+            "b": 26
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "color": "#898781",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "x": {
+          "field": "a",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "b",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "a": 17.5,
+            "b": 19.2,
+            "t": "Fair share line"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "angle": 315,
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "color": "#898781"
+      },
+      "encoding": {
+        "x": {
+          "field": "a",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "b",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "dotHover",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "nearest": true,
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 130,
+        "stroke": "#faf8f4",
+        "strokeWidth": 2,
+        "opacity": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "side",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "More failures than its size suggests",
+              "Fewer failures than its size suggests"
+            ],
+            "range": [
+              "#eb6834",
+              "#2a78d6"
+            ]
+          },
+          "legend": {
+            "orient": "top-left",
+            "labelLimit": 300
+          }
+        },
+        "size": {
+          "condition": {
+            "param": "dotHover",
+            "empty": false,
+            "value": 260
+          },
+          "value": 130
+        },
+        "tooltip": [
+          {
+            "field": "industry",
+            "title": "Industry"
+          },
+          {
+            "field": "end",
+            "title": "Businesses (June 2026)",
+            "format": ","
+          },
+          {
+            "field": "share_bus",
+            "title": "Share of businesses (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "n",
+            "title": "Companies entering insolvency",
+            "format": ","
+          },
+          {
+            "field": "share_insolv",
+            "title": "Share of insolvencies (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "indexof(['Construction','Hospitality','Professional services','Real estate & rental','Transport & delivery','Health care','Agriculture','Other services','Retail'], datum.industry) >= 0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#1d1d1b"
+      },
+      "encoding": {
+        "text": {
+          "field": "industry"
+        }
+      }
+    }
+  ]
+}

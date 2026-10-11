@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Marimekko (mosaic) chart: each column is an industry, its width is the industry's share of all businesses and the coloured segments show the mix of business sizes inside it (June 2025). Industries are ordered from most to fewest sole operators. Source: ABS 8165.0 data cube 8, summed nationally.",
+  "data": {"url": "data/industry_size_2025.csv"},
+  "width": 860,
+  "height": 340,
+  "transform": [
+    {"joinaggregate": [{"op": "sum", "field": "n", "as": "indTotal"}], "groupby": ["industry"]},
+    {"joinaggregate": [{"op": "sum", "field": "n", "as": "allTotal"}]},
+    {"calculate": "datum.size == 'Non-employing' ? datum.n / datum.indTotal : 0", "as": "nonEmpShare"},
+    {"joinaggregate": [{"op": "max", "field": "nonEmpShare", "as": "indNonEmp"}], "groupby": ["industry"]},
+    {"calculate": "indexof(['Non-employing','1-4','5-19','20-199','200+'], datum.size)", "as": "sizeOrder"},
+    {"window": [{"op": "sum", "field": "n", "as": "cumAll"}], "sort": [{"field": "indNonEmp", "order": "descending"}, {"field": "industry"}, {"field": "sizeOrder"}], "frame": [null, 0]},
+    {"joinaggregate": [{"op": "max", "field": "cumAll", "as": "indEnd"}], "groupby": ["industry"]},
+    {"calculate": "(datum.indEnd - datum.indTotal) / datum.allTotal", "as": "x0"},
+    {"calculate": "datum.indEnd / datum.allTotal", "as": "x1"},
+    {"window": [{"op": "sum", "field": "n", "as": "cumInd"}], "groupby": ["industry"], "sort": [{"field": "sizeOrder"}], "frame": [null, 0]},
+    {"calculate": "(datum.cumInd - datum.n) / datum.indTotal", "as": "y0"},
+    {"calculate": "datum.cumInd / datum.indTotal", "as": "y1"},
+    {"calculate": "datum.n / datum.indTotal * 100", "as": "pctInInd"},
+    {"calculate": "datum.indTotal / datum.allTotal * 100", "as": "indShare"}
+  ],
+  "layer": [
+    {
+      "params": [{"name": "colHover", "select": {"type": "point", "fields": ["industry"], "on": "pointerover", "clear": "pointerout"}}],
+      "mark": {"type": "rect", "stroke": "#faf8f4", "strokeWidth": 1},
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "title": "Share of all businesses (column width) →", "scale": {"domain": [0, 1]}, "axis": {"format": ".0%", "tickCount": 10, "grid": false, "titleFontWeight": 400, "titleColor": "#52514e"}},
+        "x2": {"field": "x1"},
+        "y": {"field": "y0", "type": "quantitative", "title": "Share of the industry's businesses", "scale": {"domain": [0, 1]}, "axis": {"format": ".0%", "tickCount": 5, "grid": false}},
+        "y2": {"field": "y1"},
+        "color": {
+          "field": "size", "type": "ordinal", "title": "Number of employees",
+          "scale": {"domain": ["Non-employing", "1-4", "5-19", "20-199", "200+"], "range": ["#9ec5f4", "#5598e7", "#256abf", "#104281", "#eb6834"]},
+          "legend": {"orient": "top", "direction": "horizontal", "labelExpr": "datum.label == 'Non-employing' ? 'None (sole operators)' : datum.label"}
+        },
+        "opacity": {"condition": {"param": "colHover", "empty": true, "value": 1}, "value": 0.4},
+        "tooltip": [
+          {"field": "industry", "title": "Industry"},
+          {"field": "indTotal", "title": "Businesses in industry", "format": ","},
+          {"field": "indShare", "title": "Share of all businesses (%)", "format": ".1f"},
+          {"field": "size", "title": "Employees"},
+          {"field": "n", "title": "Businesses of this size", "format": ","},
+          {"field": "pctInInd", "title": "Share of the industry (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.sizeOrder == 0 && datum.indShare >= 3"},
+        {"calculate": "(datum.x0 + datum.x1) / 2", "as": "xm"}
+      ],
+      "mark": {"type": "text", "angle": 270, "align": "left", "baseline": "middle", "fontSize": 11, "fontWeight": 600, "color": "#0b2a52", "dx": 0},
+      "encoding": {
+        "x": {"field": "xm", "type": "quantitative"},
+        "y": {"datum": 0.02},
+        "text": {"field": "industry"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.sizeOrder == 0 && datum.indShare >= 3"},
+        {"calculate": "(datum.x0 + datum.x1) / 2", "as": "xm"},
+        {"calculate": "format(datum.pctInInd, '.0f') + '%'", "as": "lab"}
+      ],
+      "mark": {"type": "text", "baseline": "bottom", "dy": -4, "fontSize": 10.5, "fontWeight": 700, "color": "#0b2a52"},
+      "encoding": {
+        "x": {"field": "xm", "type": "quantitative"},
+        "y": {"field": "y1", "type": "quantitative"},
+        "text": {"field": "lab"}
+      }
+    }
+  ]
+}

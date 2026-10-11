@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Waffle chart: 1,000 squares, each one about 2,815 of Australia's businesses at June 2026, coloured by employment size. Source: ABS 8165.0 (Jul 2022 - Jun 2026), Table 13.",
+  "data": {
+    "url": "data/waffle.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "size_n": "number",
+        "size_pct": "number",
+        "col": "number",
+        "row": "number"
+      }
+    }
+  },
+  "width": 440,
+  "height": 275,
+  "params": [
+    {
+      "name": "sizeHover",
+      "select": {
+        "type": "point",
+        "fields": [
+          "size"
+        ],
+        "on": "pointerover",
+        "clear": "pointerout"
+      }
+    },
+    {
+      "name": "sizeLegend",
+      "select": {
+        "type": "point",
+        "fields": [
+          "size"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 1.5
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "paddingInner": 0.22
+      }
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "paddingInner": 0.22
+      }
+    },
+    "color": {
+      "field": "size",
+      "type": "ordinal",
+      "title": "Number of employees",
+      "scale": {
+        "domain": [
+          "Non-employing",
+          "1-4",
+          "5-19",
+          "20-199",
+          "200+"
+        ],
+        "range": [
+          "#9ec5f4",
+          "#5598e7",
+          "#256abf",
+          "#104281",
+          "#eb6834"
+        ]
+      },
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "symbolType": "square",
+        "labelExpr": "datum.label == 'Non-employing' ? 'None (sole operators)' : datum.label"
+      }
+    },
+    "opacity": {
+      "condition": [
+        {
+          "param": "sizeLegend",
+          "empty": true,
+          "value": 1
+        }
+      ],
+      "value": 0.15
+    },
+    "stroke": {
+      "condition": {
+        "param": "sizeHover",
+        "empty": false,
+        "value": "#1d1d1b"
+      },
+      "value": null
+    },
+    "tooltip": [
+      {
+        "field": "size",
+        "title": "Employees"
+      },
+      {
+        "field": "size_n",
+        "title": "Businesses",
+        "format": ","
+      },
+      {
+        "field": "size_pct",
+        "title": "Share of all businesses (%)",
+        "format": ".1f"
+      }
+    ]
+  }
+}

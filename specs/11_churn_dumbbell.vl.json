@@ -1,0 +1,195 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart: for each industry, the share of businesses that started (entry rate) and closed (exit rate) during the chosen financial year, as a % of businesses operating at the start of the year. Source: ABS 8165.0 Table 1.",
+  "data": {
+    "url": "data/industry_annual.csv"
+  },
+  "width": 300,
+  "height": 455,
+  "params": [
+    {
+      "name": "cyr",
+      "value": 2026,
+      "bind": {
+        "input": "select",
+        "name": "Financial year: ",
+        "options": [
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026
+        ],
+        "labels": [
+          "2018-19",
+          "2019-20",
+          "2020-21",
+          "2021-22",
+          "2022-23",
+          "2023-24",
+          "2024-25",
+          "2025-26"
+        ]
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.year == cyr"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "industry",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "entry_rate",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 11.5,
+        "labelPadding": 6,
+        "grid": true,
+        "gridColor": "#ece9e2"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#d6d3ca"
+      },
+      "encoding": {
+        "x": {
+          "field": "exit_rate",
+          "type": "quantitative",
+          "title": "% of businesses at start of year",
+          "scale": {
+            "domain": [
+              0,
+              32
+            ],
+            "nice": false
+          },
+          "axis": {
+            "tickCount": 8
+          }
+        },
+        "x2": {
+          "field": "entry_rate"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "entry_rate",
+            "exit_rate"
+          ],
+          "as": [
+            "kind",
+            "rate"
+          ]
+        },
+        {
+          "calculate": "datum.kind == 'entry_rate' ? 'Started' : 'Closed'",
+          "as": "kindLabel"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 110,
+        "opacity": 1,
+        "stroke": "#faf8f4",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "rate",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "kindLabel",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Started",
+              "Closed"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "labelExpr": "datum.label == 'Started' ? 'Started in year' : 'Closed in year'"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "industry",
+            "title": "Industry"
+          },
+          {
+            "field": "fy",
+            "title": "Financial year"
+          },
+          {
+            "field": "kindLabel",
+            "title": "Measure"
+          },
+          {
+            "field": "rate",
+            "title": "Rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "start",
+            "title": "Businesses at start of year",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.industry == 'Transport & delivery' || datum.industry == 'Agriculture'"
+        },
+        {
+          "calculate": "'net ' + format(datum.growth_pct, '+.1f') + '%'",
+          "as": "lab"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 10.5,
+        "color": "#52514e",
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {
+          "field": "entry_rate",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "lab"
+        }
+      }
+    }
+  ]
+}

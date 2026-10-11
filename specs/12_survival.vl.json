@@ -1,0 +1,212 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Survival lines: the share of businesses that started in 2022-23 that were still trading 1, 2 and 3 years later, by industry. Source: ABS 8165.0 Table 3 (Jul 2022 - Jun 2026).",
+  "data": {
+    "url": "data/survival_entries.csv"
+  },
+  "width": 340,
+  "height": 330,
+  "params": [
+    {
+      "name": "pick",
+      "value": "Transport & delivery",
+      "bind": {
+        "input": "select",
+        "name": "Highlight an industry: ",
+        "options": [
+          "Agriculture",
+          "Real estate & rental",
+          "Health care",
+          "Mining",
+          "Manufacturing",
+          "Finance & insurance",
+          "Professional services",
+          "Hospitality",
+          "Arts & recreation",
+          "Education",
+          "Other services",
+          "Utilities",
+          "Construction",
+          "Media & telco",
+          "Retail",
+          "Wholesale",
+          "Admin & support",
+          "Public admin",
+          "Transport & delivery"
+        ]
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "years",
+      "type": "quantitative",
+      "title": "Years after the year they started",
+      "scale": {
+        "domain": [
+          0,
+          4.7
+        ]
+      },
+      "axis": {
+        "values": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "grid": false,
+        "labelExpr": "datum.value == 0 ? 'Start' : datum.value + (datum.value == 1 ? ' year' : ' years')"
+      }
+    },
+    "y": {
+      "field": "pct",
+      "type": "quantitative",
+      "title": "Still trading (%)",
+      "scale": {
+        "domain": [
+          30,
+          100
+        ]
+      },
+      "axis": {
+        "tickCount": 7
+      }
+    },
+    "detail": {
+      "field": "industry"
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.industry != 'All industries' && datum.industry != pick"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "#d6d3ca",
+        "strokeWidth": 1.3,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "industry",
+            "title": "Industry"
+          },
+          {
+            "field": "years",
+            "title": "Years"
+          },
+          {
+            "field": "pct",
+            "title": "Still trading (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.industry == 'All industries'"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "#1d1d1b",
+        "strokeWidth": 2,
+        "interpolate": "monotone",
+        "point": {
+          "size": 30,
+          "filled": true,
+          "color": "#1d1d1b"
+        }
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "industry",
+            "title": "Industry"
+          },
+          {
+            "field": "years",
+            "title": "Years"
+          },
+          {
+            "field": "pct",
+            "title": "Still trading (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.industry == pick"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "#eb6834",
+        "strokeWidth": 3,
+        "interpolate": "monotone",
+        "point": {
+          "size": 50,
+          "filled": true,
+          "color": "#eb6834"
+        }
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "industry",
+            "title": "Industry"
+          },
+          {
+            "field": "years",
+            "title": "Years"
+          },
+          {
+            "field": "pct",
+            "title": "Still trading (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.years == 3 && (datum.industry == pick || datum.industry == 'All industries')"
+        },
+        {
+          "calculate": "datum.industry + ' ' + format(datum.pct, '.0f') + '%'",
+          "as": "lab"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11.5,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "text": {
+          "field": "lab"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.industry == pick",
+            "value": "#c4501f"
+          },
+          "value": "#1d1d1b"
+        }
+      }
+    }
+  ]
+}

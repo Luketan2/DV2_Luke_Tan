@@ -1,0 +1,244 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Tile grid map: each state is a tile placed roughly where it sits on the map, holding a small chart of companies entering insolvency per 10,000 businesses, 2018-19 to 2025-26. Sources: ASIC Insolvency statistics Series 1 (archive to Jul 2022 and Oct 2026 release); ABS 8165.0 state counts.",
+  "data": {
+    "url": "data/insolvency_state_annual.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.year >= 2019 && datum.abbr != 'AUS'"
+    },
+    {
+      "calculate": "{'NT': 0, 'QLD': 0, 'WA': 1, 'SA': 1, 'NSW': 1, 'ACT': 2, 'VIC': 2, 'TAS': 3}[datum.abbr]",
+      "as": "row"
+    },
+    {
+      "calculate": "{'NT': 1, 'QLD': 2, 'WA': 0, 'SA': 1, 'NSW': 2, 'ACT': 3, 'VIC': 2, 'TAS': 2}[datum.abbr]",
+      "as": "col"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "year",
+          "as": "lastYear"
+        }
+      ],
+      "groupby": [
+        "abbr"
+      ]
+    }
+  ],
+  "facet": {
+    "row": {
+      "field": "row",
+      "type": "ordinal",
+      "header": null
+    },
+    "column": {
+      "field": "col",
+      "type": "ordinal",
+      "header": null
+    }
+  },
+  "spacing": {
+    "row": 8,
+    "column": 8
+  },
+  "spec": {
+    "width": 170,
+    "height": 92,
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "quantitative",
+        "scale": {
+          "domain": [
+            2018.6,
+            2026.9
+          ]
+        },
+        "axis": null
+      },
+      "y": {
+        "field": "per_10k",
+        "type": "quantitative",
+        "scale": {
+          "domain": [
+            0,
+            90
+          ]
+        },
+        "axis": null
+      }
+    },
+    "layer": [
+      {
+        "transform": [
+          {
+            "filter": "datum.year == 2019"
+          }
+        ],
+        "mark": {
+          "type": "rect",
+          "color": "#f1eee7",
+          "cornerRadius": 6
+        },
+        "encoding": {
+          "x": {
+            "datum": 2018.6
+          },
+          "x2": {
+            "datum": 2026.9
+          },
+          "y": {
+            "datum": 0
+          },
+          "y2": {
+            "datum": 90
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "rule",
+          "color": "#c3c2b7",
+          "strokeWidth": 1
+        },
+        "encoding": {
+          "y": {
+            "datum": 50.3
+          },
+          "x": null
+        }
+      },
+      {
+        "mark": {
+          "type": "area",
+          "color": "#f7c8b3",
+          "opacity": 0.6,
+          "interpolate": "monotone"
+        }
+      },
+      {
+        "mark": {
+          "type": "line",
+          "color": "#c4501f",
+          "strokeWidth": 2,
+          "interpolate": "monotone"
+        }
+      },
+      {
+        "params": [
+          {
+            "name": "tileHover",
+            "select": {
+              "type": "point",
+              "on": "pointerover",
+              "nearest": true,
+              "clear": "pointerout"
+            }
+          }
+        ],
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "size": 60,
+          "color": "#c4501f",
+          "opacity": 0
+        },
+        "encoding": {
+          "opacity": {
+            "condition": {
+              "param": "tileHover",
+              "empty": false,
+              "value": 1
+            },
+            "value": 0
+          },
+          "tooltip": [
+            {
+              "field": "state",
+              "title": "State"
+            },
+            {
+              "field": "fy",
+              "title": "Financial year"
+            },
+            {
+              "field": "n",
+              "title": "Companies entering insolvency",
+              "format": ","
+            },
+            {
+              "field": "per_10k",
+              "title": "Per 10,000 businesses",
+              "format": ".1f"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.year == datum.lastYear"
+          }
+        ],
+        "mark": {
+          "type": "circle",
+          "size": 30,
+          "color": "#c4501f"
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.year == datum.lastYear"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "dx": -6,
+          "dy": -10,
+          "fontSize": 12,
+          "fontWeight": 700,
+          "color": "#1d1d1b"
+        },
+        "encoding": {
+          "text": {
+            "field": "per_10k",
+            "format": ".0f"
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.year == 2019"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "top",
+          "x": 8,
+          "y": 6,
+          "fontSize": 13,
+          "fontWeight": 700,
+          "color": "#1d1d1b"
+        },
+        "encoding": {
+          "text": {
+            "field": "abbr"
+          },
+          "x": null,
+          "y": null
+        }
+      }
+    ],
+    "view": {
+      "stroke": null
+    }
+  }
+}

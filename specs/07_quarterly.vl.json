@@ -1,0 +1,377 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Two stacked line charts sharing a time axis: total businesses operating (top) and quarterly entries and exits (bottom), seasonally adjusted, March 2013 to March 2025. Source: ABS 8165.0 quarterly time series (discontinued after March 2025).",
+  "data": {
+    "url": "data/national_quarterly.csv",
+    "format": {
+      "parse": {
+        "date": "date"
+      }
+    }
+  },
+  "spacing": 26,
+  "vconcat": [
+    {
+      "width": 860,
+      "height": 230,
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": null,
+          "scale": {
+            "domain": {
+              "param": "brush"
+            }
+          },
+          "axis": {
+            "format": "%Y",
+            "tickCount": 12,
+            "grid": false
+          }
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "area",
+            "color": "#cde2fb",
+            "opacity": 0.55
+          },
+          "encoding": {
+            "y": {
+              "field": "total_sa",
+              "type": "quantitative",
+              "title": "Businesses operating",
+              "scale": {
+                "domain": [
+                  1800000,
+                  2800000
+                ]
+              },
+              "axis": {
+                "format": "~s",
+                "labelExpr": "format(datum.value / 1e6, '.1f') + 'M'"
+              }
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "line",
+            "color": "#2a78d6",
+            "strokeWidth": 2.4
+          },
+          "encoding": {
+            "y": {
+              "field": "total_sa",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "params": [
+            {
+              "name": "qHover",
+              "select": {
+                "type": "point",
+                "encodings": [
+                  "x"
+                ],
+                "on": "pointerover",
+                "nearest": true,
+                "clear": "pointerout"
+              }
+            }
+          ],
+          "mark": {
+            "type": "rule",
+            "color": "#52514e",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "opacity": {
+              "condition": {
+                "param": "qHover",
+                "empty": false,
+                "value": 0.6
+              },
+              "value": 0
+            },
+            "tooltip": [
+              {
+                "field": "date",
+                "type": "temporal",
+                "title": "Quarter ending",
+                "format": "%b %Y"
+              },
+              {
+                "field": "total_sa",
+                "title": "Businesses operating",
+                "format": ","
+              },
+              {
+                "field": "entries_sa",
+                "title": "New businesses (quarter)",
+                "format": ","
+              },
+              {
+                "field": "exits_sa",
+                "title": "Closed businesses (quarter)",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "date": "2020-03-31",
+                "label": "COVID-19 lockdowns begin",
+                "y": 2390000,
+                "base": 1800000
+              },
+              {
+                "date": "2021-09-30",
+                "label": "Record start-up boom",
+                "y": 2555000,
+                "base": 1800000
+              }
+            ],
+            "format": {
+              "parse": {
+                "date": "date"
+              }
+            }
+          },
+          "mark": {
+            "type": "rule",
+            "color": "#898781",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "x": {
+              "field": "date",
+              "type": "temporal"
+            },
+            "y": {
+              "field": "base",
+              "type": "quantitative"
+            },
+            "y2": {
+              "field": "y"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "date": "2020-03-31",
+                "label": "COVID-19 lockdowns begin",
+                "y": 2390000,
+                "base": 1800000
+              },
+              {
+                "date": "2021-09-30",
+                "label": "Record start-up boom",
+                "y": 2555000,
+                "base": 1800000
+              }
+            ],
+            "format": {
+              "parse": {
+                "date": "date"
+              }
+            }
+          },
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -5,
+            "dy": 4,
+            "fontSize": 11,
+            "color": "#52514e",
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "x": {
+              "field": "date",
+              "type": "temporal"
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "window": [
+                {
+                  "op": "rank",
+                  "as": "r"
+                }
+              ],
+              "sort": [
+                {
+                  "field": "date",
+                  "order": "descending"
+                }
+              ]
+            },
+            {
+              "filter": "datum.r == 1"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dy": -12,
+            "fontSize": 12,
+            "fontWeight": 700,
+            "color": "#1d1d1b"
+          },
+          "encoding": {
+            "y": {
+              "field": "total_sa",
+              "type": "quantitative"
+            },
+            "text": {
+              "value": "2.70 million"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 860,
+      "height": 150,
+      "transform": [
+        {
+          "fold": [
+            "entries_sa",
+            "exits_sa"
+          ],
+          "as": [
+            "flow",
+            "value"
+          ]
+        },
+        {
+          "calculate": "datum.flow == 'entries_sa' ? 'New businesses' : 'Closed businesses'",
+          "as": "flowLabel"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Drag across this chart to zoom the chart above",
+          "axis": {
+            "format": "%Y",
+            "tickCount": 12,
+            "grid": false,
+            "titleFontWeight": 400,
+            "titleColor": "#898781",
+            "titleFontStyle": "italic"
+          }
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Per quarter",
+          "scale": {
+            "domain": [
+              60000,
+              140000
+            ]
+          },
+          "axis": {
+            "labelExpr": "format(datum.value / 1000, '.0f') + 'k'",
+            "tickCount": 4
+          }
+        },
+        "color": {
+          "field": "flowLabel",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "New businesses",
+              "Closed businesses"
+            ],
+            "range": [
+              "#2a78d6",
+              "#eb6834"
+            ]
+          },
+          "legend": null
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "strokeWidth": 2
+          },
+          "params": [
+            {
+              "name": "brush",
+              "select": {
+                "type": "interval",
+                "encodings": [
+                  "x"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "transform": [
+            {
+              "window": [
+                {
+                  "op": "rank",
+                  "as": "r"
+                }
+              ],
+              "groupby": [
+                "flow"
+              ],
+              "sort": [
+                {
+                  "field": "date",
+                  "order": "descending"
+                }
+              ]
+            },
+            {
+              "filter": "datum.r == 1"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "fontSize": 11,
+            "fontWeight": 600
+          },
+          "encoding": {
+            "text": {
+              "field": "flowLabel"
+            },
+            "color": {
+              "value": "#52514e"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

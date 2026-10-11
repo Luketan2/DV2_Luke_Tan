@@ -1,0 +1,81 @@
+industry,years,pct,n
+Agriculture,0,100.0,13845
+Agriculture,1,80.3,11117
+Agriculture,2,67.3,9315
+Agriculture,3,60.2,8333
+Mining,0,100.0,980
+Mining,1,76.3,748
+Mining,2,60.9,597
+Mining,3,52.8,517
+Manufacturing,0,100.0,11228
+Manufacturing,1,77.1,8660
+Manufacturing,2,61.4,6893
+Manufacturing,3,52.2,5857
+Utilities,0,100.0,1256
+Utilities,1,73.6,925
+Utilities,2,56.1,704
+Utilities,3,49.0,616
+Construction,0,100.0,73113
+Construction,1,74.8,54664
+Construction,2,57.2,41806
+Construction,3,48.0,35094
+Wholesale,0,100.0,11203
+Wholesale,1,72.0,8068
+Wholesale,2,54.0,6055
+Wholesale,3,45.6,5105
+Retail,0,100.0,23766
+Retail,1,74.7,17759
+Retail,2,56.1,13344
+Retail,3,46.2,10979
+Hospitality,0,100.0,18340
+Hospitality,1,77.5,14216
+Hospitality,2,59.9,10980
+Hospitality,3,50.4,9238
+Transport & delivery,0,100.0,55118
+Transport & delivery,1,71.8,39595
+Transport & delivery,2,48.1,26501
+Transport & delivery,3,37.4,20607
+Media & telco,0,100.0,3865
+Media & telco,1,76.1,2941
+Media & telco,2,58.3,2255
+Media & telco,3,47.9,1852
+Finance & insurance,0,100.0,18658
+Finance & insurance,1,76.2,14225
+Finance & insurance,2,59.6,11129
+Finance & insurance,3,52.0,9708
+Real estate & rental,0,100.0,32553
+Real estate & rental,1,78.6,25597
+Real estate & rental,2,64.4,20977
+Real estate & rental,3,58.1,18914
+Professional services,0,100.0,51382
+Professional services,1,77.7,39906
+Professional services,2,60.5,31103
+Professional services,3,51.3,26378
+Admin & support,0,100.0,24806
+Admin & support,1,71.7,17793
+Admin & support,2,52.2,12940
+Admin & support,3,42.4,10525
+Public admin,0,100.0,1370
+Public admin,1,71.2,975
+Public admin,2,52.0,713
+Public admin,3,41.7,571
+Education,0,100.0,6408
+Education,1,76.6,4908
+Education,2,59.2,3794
+Education,3,50.4,3231
+Health care,0,100.0,29722
+Health care,1,81.4,24199
+Health care,2,66.9,19898
+Health care,3,59.2,17583
+Arts & recreation,0,100.0,6649
+Arts & recreation,1,77.1,5124
+Arts & recreation,2,59.9,3980
+Arts & recreation,3,50.0,3322
+Other services,0,100.0,21766
+Other services,1,76.8,16716
+Other services,2,60.3,13127
+Other services,3,51.4,11190
+All industries,0,100.0,406365
+All industries,1,75.9,308337
+All industries,2,58.1,236259
+All industries,3,49.2,199742

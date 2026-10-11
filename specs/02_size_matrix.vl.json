@@ -1,0 +1,150 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Transition matrix: where businesses that were trading in both June 2025 and June 2026 moved between employment-size groups. Each row sums to 100%. Source: ABS 8165.0, Table 14.",
+  "data": {
+    "url": "data/size_transitions.csv"
+  },
+  "width": 380,
+  "height": 275,
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "n",
+          "as": "rowTotal"
+        }
+      ],
+      "groupby": [
+        "from"
+      ]
+    },
+    {
+      "calculate": "datum.n / datum.rowTotal * 100",
+      "as": "pct"
+    },
+    {
+      "calculate": "datum.from == datum.to ? 'Stayed the same size' : (indexof(['Non-employing','1-4','5-19','20-199','200+'], datum.to) > indexof(['Non-employing','1-4','5-19','20-199','200+'], datum.from) ? 'Grew' : 'Shrank')",
+      "as": "move"
+    },
+    {
+      "calculate": "datum.pct >= 10 ? format(datum.pct, '.0f') + '%' : datum.pct >= 0.1 ? format(datum.pct, '.1f') + '%' : '<0.1%'",
+      "as": "label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "to",
+      "type": "ordinal",
+      "title": "Employees in June 2026",
+      "sort": [
+        "Non-employing",
+        "1-4",
+        "5-19",
+        "20-199",
+        "200+"
+      ],
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelExpr": "datum.label == 'Non-employing' ? 'None' : datum.label"
+      }
+    },
+    "y": {
+      "field": "from",
+      "type": "ordinal",
+      "title": "Employees in June 2025",
+      "sort": [
+        "Non-employing",
+        "1-4",
+        "5-19",
+        "20-199",
+        "200+"
+      ],
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelExpr": "datum.label == 'Non-employing' ? 'None' : datum.label"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#faf8f4",
+        "strokeWidth": 2,
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "color": {
+          "field": "pct",
+          "type": "quantitative",
+          "title": "% of row",
+          "scale": {
+            "type": "log",
+            "domain": [
+              0.01,
+              100
+            ],
+            "range": [
+              "#f3f1ec",
+              "#cde2fb",
+              "#6da7ec",
+              "#256abf",
+              "#0d366b"
+            ],
+            "interpolate": "rgb",
+            "clamp": true
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "from",
+            "title": "Size in June 2025"
+          },
+          {
+            "field": "to",
+            "title": "Size in June 2026"
+          },
+          {
+            "field": "move",
+            "title": "Change"
+          },
+          {
+            "field": "n",
+            "title": "Businesses",
+            "format": ","
+          },
+          {
+            "field": "pct",
+            "title": "Share of row (%)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11.5,
+        "fontWeight": 500
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.pct > 4",
+            "value": "#ffffff"
+          },
+          "value": "#1d1d1b"
+        }
+      }
+    }
+  ]
+}

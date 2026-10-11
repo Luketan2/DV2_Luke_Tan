@@ -1,0 +1,101 @@
+industry,years,pct,n
+Agriculture,0,100.0,175272
+Agriculture,1,91.8,160844
+Agriculture,2,84.9,148765
+Agriculture,3,79.4,139144
+Agriculture,4,74.5,130525
+Mining,0,100.0,8357
+Mining,1,89.4,7468
+Mining,2,81.5,6814
+Mining,3,75.6,6322
+Mining,4,70.4,5881
+Manufacturing,0,100.0,89250
+Manufacturing,1,88.2,78686
+Manufacturing,2,78.8,70289
+Manufacturing,3,71.5,63796
+Manufacturing,4,65.1,58125
+Utilities,0,100.0,8341
+Utilities,1,87.8,7322
+Utilities,2,78.2,6522
+Utilities,3,71.4,5953
+Utilities,4,64.4,5371
+Construction,0,100.0,435420
+Construction,1,85.2,370957
+Construction,2,73.9,321762
+Construction,3,66.0,287590
+Construction,4,59.6,259531
+Wholesale,0,100.0,81794
+Wholesale,1,86.5,70757
+Wholesale,2,76.4,62452
+Wholesale,3,69.1,56516
+Wholesale,4,63.2,51724
+Retail,0,100.0,157321
+Retail,1,84.7,133215
+Retail,2,72.7,114392
+Retail,3,63.8,100311
+Retail,4,56.5,88856
+Hospitality,0,100.0,110368
+Hospitality,1,83.2,91853
+Hospitality,2,70.4,77741
+Hospitality,3,61.2,67491
+Hospitality,4,53.7,59294
+Transport & delivery,0,100.0,209753
+Transport & delivery,1,77.9,163295
+Transport & delivery,2,63.7,133715
+Transport & delivery,3,54.6,114561
+Transport & delivery,4,47.3,99230
+Media & telco,0,100.0,24596
+Media & telco,1,84.7,20826
+Media & telco,2,72.9,17932
+Media & telco,3,64.7,15924
+Media & telco,4,58.0,14273
+Finance & insurance,0,100.0,119730
+Finance & insurance,1,87.2,104405
+Finance & insurance,2,78.2,93688
+Finance & insurance,3,71.5,85656
+Finance & insurance,4,65.9,78921
+Real estate & rental,0,100.0,286229
+Real estate & rental,1,90.1,257868
+Real estate & rental,2,82.8,237076
+Real estate & rental,3,77.3,221363
+Real estate & rental,4,72.5,207541
+Professional services,0,100.0,329618
+Professional services,1,86.3,284621
+Professional services,2,75.9,250123
+Professional services,3,68.2,224654
+Professional services,4,61.8,203808
+Admin & support,0,100.0,117731
+Admin & support,1,81.4,95862
+Admin & support,2,68.2,80262
+Admin & support,3,59.6,70188
+Admin & support,4,52.7,62003
+Public admin,0,100.0,7505
+Public admin,1,82.1,6158
+Public admin,2,69.7,5228
+Public admin,3,61.6,4622
+Public admin,4,55.0,4126
+Education,0,100.0,40509
+Education,1,85.2,34499
+Education,2,74.2,30070
+Education,3,66.6,26995
+Education,4,60.3,24411
+Health care,0,100.0,174154
+Health care,1,89.7,156139
+Health care,2,81.5,141957
+Health care,3,75.3,131209
+Health care,4,70.2,122228
+Arts & recreation,0,100.0,36653
+Arts & recreation,1,84.6,31002
+Arts & recreation,2,72.7,26659
+Arts & recreation,3,64.4,23609
+Arts & recreation,4,57.8,21189
+Other services,0,100.0,125074
+Other services,1,84.9,106157
+Other services,2,73.5,91956
+Other services,3,65.3,81734
+Other services,4,58.7,73370
+All industries,0,100.0,2539724
+All industries,1,86.0,2183508
+All industries,2,75.5,1918643
+All industries,3,68.1,1728757
+All industries,4,61.9,1571449

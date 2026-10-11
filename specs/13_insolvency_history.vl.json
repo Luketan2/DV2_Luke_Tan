@@ -1,0 +1,187 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart: companies entering external administration (insolvency) for the first time each financial year in Australia, 1999-2000 to 2025-26. Sources: ASIC Insolvency statistics Series 1 archive (to 2021-22) and ASIC Series 1 & 2 (published 6 Oct 2026, from 2021-22).",
+  "data": {
+    "url": "data/insolvency_state_annual.csv"
+  },
+  "width": 860,
+  "height": 280,
+  "transform": [
+    {
+      "filter": "datum.abbr == 'AUS'"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "fy",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "labelExpr": "indexof(['1999-00','2004-05','2009-10','2014-15','2019-20','2025-26'], datum.value) >= 0 ? datum.value : ''",
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "y": {
+      "field": "n",
+      "type": "quantitative",
+      "title": "Companies entering insolvency",
+      "axis": {
+        "labelExpr": "format(datum.value, ',')",
+        "tickCount": 4
+      },
+      "scale": {
+        "domain": [
+          0,
+          17000
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "barHover",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "bar",
+        "width": {
+          "band": 0.72
+        },
+        "cornerRadiusTopLeft": 3,
+        "cornerRadiusTopRight": 3
+      },
+      "encoding": {
+        "color": {
+          "condition": [
+            {
+              "param": "barHover",
+              "empty": false,
+              "value": "#1d1d1b"
+            },
+            {
+              "test": "datum.year >= 2024",
+              "value": "#eb6834"
+            }
+          ],
+          "value": "#c9c5bb"
+        },
+        "tooltip": [
+          {
+            "field": "fy",
+            "title": "Financial year"
+          },
+          {
+            "field": "n",
+            "title": "Companies entering insolvency",
+            "format": ","
+          },
+          {
+            "field": "per_10k",
+            "title": "Per 10,000 businesses",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "fy": "2008-09",
+            "n": 10005,
+            "y": 10005,
+            "label": [
+              "Global financial",
+              "crisis"
+            ]
+          },
+          {
+            "fy": "2020-21",
+            "n": 4235,
+            "y": 9300,
+            "label": [
+              "COVID support:",
+              "lowest since 1999"
+            ]
+          },
+          {
+            "fy": "2024-25",
+            "n": 14722,
+            "y": 14722,
+            "label": [
+              "Record:",
+              "14,722"
+            ]
+          }
+        ]
+      },
+      "layer": [
+        {
+          "transform": [
+            {
+              "filter": "datum.fy == '2020-21'"
+            }
+          ],
+          "mark": {
+            "type": "rule",
+            "color": "#898781"
+          },
+          "encoding": {
+            "x": {
+              "field": "fy",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "n",
+              "type": "quantitative",
+              "axis": {
+                "labelExpr": "format(datum.value, ',')",
+                "tickCount": 4
+              }
+            },
+            "y2": {
+              "field": "y"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontStyle": "italic",
+            "color": "#52514e",
+            "baseline": "alphabetic",
+            "dy": -22,
+            "lineHeight": 13
+          },
+          "encoding": {
+            "x": {
+              "field": "fy",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "y",
+              "type": "quantitative",
+              "axis": {
+                "labelExpr": "format(datum.value, ',')",
+                "tickCount": 4
+              }
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
