@@ -4,8 +4,8 @@
   "data": {
     "url": "data/survival_entries.csv"
   },
-  "width": 370,
-  "height": 370,
+  "width": 380,
+  "height": 300,
   "params": [
     {
       "name": "pick",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Choropleth map of businesses per 1,000 residents in each SA4 region (June 2025), with insets for the five largest capital cities and an industry filter. Sources: ABS 8165.0 data cube 8 (SA2 counts, June 2025) aggregated to SA4; ABS 3218.0 Regional population 2024-25; ABS ASGS 2021 boundaries.",
+  "description": "Choropleth map of businesses per 1,000 residents in each SA4 region (June 2025), with insets for the eight capital cities and an industry filter. Sources: ABS 8165.0 data cube 8 (SA2 counts, June 2025) aggregated to SA4; ABS 3218.0 Regional population 2024-25; ABS ASGS 2021 boundaries.",
   "data": {
     "url": "data/sa4_industry.csv",
     "format": {
@@ -48,7 +48,7 @@
   "hconcat": [
     {
       "width": 516,
-      "height": 503,
+      "height": 430,
       "title": {
         "text": "Australia",
         "fontSize": 13,
@@ -210,8 +210,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 232,
-              "height": 158,
+              "width": 268,
+              "height": 98,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -325,8 +325,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 232,
-              "height": 158,
+              "width": 268,
+              "height": 98,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -444,8 +444,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 232,
-              "height": 158,
+              "width": 268,
+              "height": 98,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -559,8 +559,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 232,
-              "height": 158,
+              "width": 268,
+              "height": 98,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -678,8 +678,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 232,
-              "height": 123,
+              "width": 268,
+              "height": 98,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -789,12 +789,19 @@
             },
             {
               "title": {
-                "text": "Hobart, Darwin & Canberra",
+                "text": "Canberra (ACT)",
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 232,
-              "height": 123,
+              "width": 268,
+              "height": 98,
+              "projection": {
+                "type": "mercator",
+                "rotate": [
+                  -149.0,
+                  0
+                ]
+              },
               "transform": [
                 {
                   "filter": "datum.industry == industry"
@@ -835,34 +842,266 @@
                   "as": "band"
                 },
                 {
-                  "filter": "(datum.gcc == 'Greater Hobart' || datum.gcc == 'Greater Darwin' || datum.gcc == 'Australian Capital Territory')"
+                  "filter": "datum.gcc == 'Australian Capital Territory'"
+                },
+                {
+                  "lookup": "sa4",
+                  "from": {
+                    "data": {
+                      "url": "data/sa4.geojson",
+                      "format": {
+                        "type": "json",
+                        "property": "features"
+                      }
+                    },
+                    "key": "properties.sa4"
+                  },
+                  "as": "geo"
                 }
               ],
               "mark": {
-                "type": "bar",
-                "height": 18,
-                "cornerRadiusEnd": 3
+                "type": "geoshape",
+                "stroke": "#faf8f4",
+                "strokeWidth": 0.6
               },
               "encoding": {
-                "y": {
-                  "field": "sa4_name",
-                  "type": "nominal",
-                  "title": null,
-                  "sort": "-x",
-                  "axis": {
-                    "labelExpr": "replace(datum.label, 'Australian Capital Territory', 'Canberra (ACT)')",
-                    "domain": false,
-                    "ticks": false
-                  }
+                "shape": {
+                  "field": "geo",
+                  "type": "geojson"
                 },
-                "x": {
-                  "field": "per_1000",
-                  "type": "quantitative",
-                  "title": "per 1,000 residents",
-                  "axis": {
-                    "tickCount": 3,
-                    "grid": false
+                "color": {
+                  "field": "band",
+                  "type": "ordinal",
+                  "title": "Businesses per 1,000 residents",
+                  "scale": {
+                    "range": [
+                      "#cde2fb",
+                      "#86b6ef",
+                      "#3987e5",
+                      "#1c5cab",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": null
+                },
+                "tooltip": [
+                  {
+                    "field": "sa4_name",
+                    "title": "Region (SA4)"
+                  },
+                  {
+                    "field": "total",
+                    "title": "Businesses",
+                    "format": ","
+                  },
+                  {
+                    "field": "per_1000",
+                    "title": "Per 1,000 residents",
+                    "format": ".1f"
                   }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "hconcat": [
+            {
+              "title": {
+                "text": "Hobart",
+                "fontSize": 12,
+                "anchor": "start"
+              },
+              "width": 268,
+              "height": 98,
+              "projection": {
+                "type": "mercator",
+                "rotate": [
+                  -147.2,
+                  0
+                ]
+              },
+              "transform": [
+                {
+                  "filter": "datum.industry == industry"
+                },
+                {
+                  "window": [
+                    {
+                      "op": "ntile",
+                      "param": 5,
+                      "as": "q"
+                    }
+                  ],
+                  "sort": [
+                    {
+                      "field": "per_1000"
+                    }
+                  ]
+                },
+                {
+                  "joinaggregate": [
+                    {
+                      "op": "min",
+                      "field": "per_1000",
+                      "as": "qmin"
+                    },
+                    {
+                      "op": "max",
+                      "field": "per_1000",
+                      "as": "qmax"
+                    }
+                  ],
+                  "groupby": [
+                    "q"
+                  ]
+                },
+                {
+                  "calculate": "datum.q + '|' + format(datum.qmin, datum.qmax < 10 ? '.1f' : '.0f') + ' – ' + format(datum.qmax, datum.qmax < 10 ? '.1f' : '.0f')",
+                  "as": "band"
+                },
+                {
+                  "filter": "datum.gcc == 'Greater Hobart'"
+                },
+                {
+                  "lookup": "sa4",
+                  "from": {
+                    "data": {
+                      "url": "data/sa4.geojson",
+                      "format": {
+                        "type": "json",
+                        "property": "features"
+                      }
+                    },
+                    "key": "properties.sa4"
+                  },
+                  "as": "geo"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "stroke": "#faf8f4",
+                "strokeWidth": 0.6
+              },
+              "encoding": {
+                "shape": {
+                  "field": "geo",
+                  "type": "geojson"
+                },
+                "color": {
+                  "field": "band",
+                  "type": "ordinal",
+                  "title": "Businesses per 1,000 residents",
+                  "scale": {
+                    "range": [
+                      "#cde2fb",
+                      "#86b6ef",
+                      "#3987e5",
+                      "#1c5cab",
+                      "#0d366b"
+                    ]
+                  },
+                  "legend": null
+                },
+                "tooltip": [
+                  {
+                    "field": "sa4_name",
+                    "title": "Region (SA4)"
+                  },
+                  {
+                    "field": "total",
+                    "title": "Businesses",
+                    "format": ","
+                  },
+                  {
+                    "field": "per_1000",
+                    "title": "Per 1,000 residents",
+                    "format": ".1f"
+                  }
+                ]
+              }
+            },
+            {
+              "title": {
+                "text": "Darwin",
+                "fontSize": 12,
+                "anchor": "start"
+              },
+              "width": 268,
+              "height": 98,
+              "projection": {
+                "type": "mercator",
+                "rotate": [
+                  -131.1,
+                  0
+                ]
+              },
+              "transform": [
+                {
+                  "filter": "datum.industry == industry"
+                },
+                {
+                  "window": [
+                    {
+                      "op": "ntile",
+                      "param": 5,
+                      "as": "q"
+                    }
+                  ],
+                  "sort": [
+                    {
+                      "field": "per_1000"
+                    }
+                  ]
+                },
+                {
+                  "joinaggregate": [
+                    {
+                      "op": "min",
+                      "field": "per_1000",
+                      "as": "qmin"
+                    },
+                    {
+                      "op": "max",
+                      "field": "per_1000",
+                      "as": "qmax"
+                    }
+                  ],
+                  "groupby": [
+                    "q"
+                  ]
+                },
+                {
+                  "calculate": "datum.q + '|' + format(datum.qmin, datum.qmax < 10 ? '.1f' : '.0f') + ' – ' + format(datum.qmax, datum.qmax < 10 ? '.1f' : '.0f')",
+                  "as": "band"
+                },
+                {
+                  "filter": "datum.gcc == 'Greater Darwin'"
+                },
+                {
+                  "lookup": "sa4",
+                  "from": {
+                    "data": {
+                      "url": "data/sa4.geojson",
+                      "format": {
+                        "type": "json",
+                        "property": "features"
+                      }
+                    },
+                    "key": "properties.sa4"
+                  },
+                  "as": "geo"
+                }
+              ],
+              "mark": {
+                "type": "geoshape",
+                "stroke": "#faf8f4",
+                "strokeWidth": 0.6
+              },
+              "encoding": {
+                "shape": {
+                  "field": "geo",
+                  "type": "geojson"
                 },
                 "color": {
                   "field": "band",

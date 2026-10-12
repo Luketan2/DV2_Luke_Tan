@@ -3,7 +3,7 @@
   "description": "Marimekko (mosaic) chart: each column is an industry, its width is the industry's share of all businesses and the coloured segments show the mix of business sizes inside it (June 2025). Industries are ordered from most to fewest sole operators. Source: ABS 8165.0 data cube 8, summed nationally.",
   "data": {"url": "data/industry_size_2025.csv"},
   "width": 1005,
-  "height": 397,
+  "height": 300,
   "transform": [
     {"joinaggregate": [{"op": "sum", "field": "n", "as": "indTotal"}], "groupby": ["industry"]},
     {"joinaggregate": [{"op": "sum", "field": "n", "as": "allTotal"}]},

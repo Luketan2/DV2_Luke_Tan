@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Tile grid map: each state is a tile placed roughly where it sits on the map, holding a small chart of companies entering insolvency per 10,000 businesses, 2018-19 to 2025-26. Sources: ASIC Insolvency statistics Series 1 (archive to Jul 2022 and Oct 2026 release); ABS 8165.0 state counts.",
+  "description": "Small multiples: one tile per state and territory, ordered from the highest to the lowest 2025-26 rate, each holding a small chart of companies entering insolvency per 10,000 businesses, 2018-19 to 2025-26. Sources: ASIC Insolvency statistics Series 1 (archive to Jul 2022 and Oct 2026 release); ABS 8165.0 state counts.",
   "data": {
     "url": "data/insolvency_state_annual.csv"
   },
@@ -9,11 +9,11 @@
       "filter": "datum.year >= 2019 && datum.abbr != 'AUS'"
     },
     {
-      "calculate": "{'NT': 0, 'QLD': 0, 'WA': 1, 'SA': 1, 'NSW': 1, 'ACT': 2, 'VIC': 2, 'TAS': 3}[datum.abbr]",
+      "calculate": "{'ACT': 0, 'NSW': 0, 'NT': 0, 'VIC': 0, 'QLD': 1, 'SA': 1, 'TAS': 1, 'WA': 1}[datum.abbr]",
       "as": "row"
     },
     {
-      "calculate": "{'NT': 1, 'QLD': 2, 'WA': 0, 'SA': 1, 'NSW': 2, 'ACT': 3, 'VIC': 2, 'TAS': 2}[datum.abbr]",
+      "calculate": "{'ACT': 0, 'NSW': 1, 'NT': 2, 'VIC': 3, 'QLD': 0, 'SA': 1, 'TAS': 2, 'WA': 3}[datum.abbr]",
       "as": "col"
     },
     {
@@ -46,8 +46,8 @@
     "column": 8
   },
   "spec": {
-    "width": 199,
-    "height": 108,
+    "width": 122,
+    "height": 185,
     "encoding": {
       "x": {
         "field": "year",
@@ -55,7 +55,7 @@
         "scale": {
           "domain": [
             2018.6,
-            2026.9
+            2028.8
           ]
         },
         "axis": null
@@ -89,7 +89,7 @@
             "datum": 2018.6
           },
           "x2": {
-            "datum": 2026.9
+            "datum": 2028.8
           },
           "y": {
             "datum": 0
@@ -198,12 +198,13 @@
         ],
         "mark": {
           "type": "text",
-          "align": "right",
-          "dx": -6,
-          "dy": -10,
+          "align": "left",
+          "dx": 7,
+          "dy": 0,
           "fontSize": 12,
           "fontWeight": 700,
-          "color": "#1d1d1b"
+          "color": "#1d1d1b",
+          "baseline": "middle"
         },
         "encoding": {
           "text": {

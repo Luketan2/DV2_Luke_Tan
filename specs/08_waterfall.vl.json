@@ -5,7 +5,7 @@
     "url": "data/national_annual.csv"
   },
   "width": 700,
-  "height": 350,
+  "height": 260,
   "params": [
     {
       "name": "yr",

@@ -4,8 +4,8 @@
   "data": {
     "url": "data/insolvency_state_annual.csv"
   },
-  "width": 1005,
-  "height": 327,
+  "width": 440,
+  "height": 270,
   "transform": [
     {
       "filter": "datum.abbr == 'AUS'"
@@ -110,7 +110,8 @@
             "y": 9300,
             "label": [
               "COVID support:",
-              "lowest since 1999"
+              "lowest since",
+              "1999"
             ]
           },
           {

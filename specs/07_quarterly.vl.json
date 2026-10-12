@@ -13,7 +13,7 @@
   "vconcat": [
     {
       "width": 940,
-      "height": 260,
+      "height": 200,
       "encoding": {
         "x": {
           "field": "date",
@@ -251,7 +251,7 @@
     },
     {
       "width": 940,
-      "height": 165,
+      "height": 120,
       "transform": [
         {
           "fold": [

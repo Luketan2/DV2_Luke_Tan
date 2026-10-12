@@ -4,8 +4,8 @@
   "data": {
     "url": "data/industry_annual.csv"
   },
-  "width": 655,
-  "height": 555,
+  "width": 400,
+  "height": 400,
   "transform": [
     {
       "joinaggregate": [

@@ -8,10 +8,10 @@
       "size": "shared"
     }
   },
-  "hconcat": [
+  "vconcat": [
     {
-      "width": 608,
-      "height": 514,
+      "width": 500,
+      "height": 340,
       "title": {
         "text": "Australia",
         "fontSize": 13,
@@ -158,15 +158,15 @@
       ]
     },
     {
-      "vconcat": [
+      "hconcat": [
         {
           "title": {
             "text": "Greater Sydney",
             "fontSize": 12,
             "anchor": "start"
           },
-          "width": 397,
-          "height": 240,
+          "width": 240,
+          "height": 185,
           "projection": {
             "type": "mercator",
             "rotate": [
@@ -317,8 +317,8 @@
             "fontSize": 12,
             "anchor": "start"
           },
-          "width": 397,
-          "height": 240,
+          "width": 240,
+          "height": 185,
           "projection": {
             "type": "mercator",
             "rotate": [
