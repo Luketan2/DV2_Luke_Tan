@@ -4,8 +4,12 @@
   "data": {
     "url": "data/national_annual.csv"
   },
-  "width": 700,
-  "height": 260,
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "height": 250,
   "params": [
     {
       "name": "yr",

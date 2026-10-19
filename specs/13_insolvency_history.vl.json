@@ -4,7 +4,11 @@
   "data": {
     "url": "data/insolvency_state_annual.csv"
   },
-  "width": 440,
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "height": 270,
   "transform": [
     {

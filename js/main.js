@@ -10,7 +10,7 @@ const BASELINE = "#c3c2b7";
 const theme = {
   background: null,
   font: "Public Sans",
-  padding: {top: 4, right: 8, bottom: 4, left: 4},
+  padding: {top: 4, right: 0, bottom: 4, left: 0},
   view: {stroke: null},
   axis: {
     labelFont: "Public Sans", titleFont: "Public Sans",

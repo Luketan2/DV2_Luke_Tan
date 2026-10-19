@@ -2,9 +2,23 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Dumbbell chart: for each industry, the share of businesses that started (entry rate) and closed (exit rate) during the chosen financial year, as a % of businesses operating at the start of the year. Source: ABS 8165.0 Table 1.",
   "data": {
-    "url": "data/industry_annual.csv"
+    "url": "data/industry_annual.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "start": "number",
+        "entry_rate": "number",
+        "exit_rate": "number",
+        "growth_pct": "number"
+      }
+    }
   },
-  "width": 380,
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "height": 400,
   "params": [
     {
@@ -166,10 +180,7 @@
     {
       "transform": [
         {
-          "filter": "datum.industry == 'Transport & delivery' || datum.industry == 'Agriculture'"
-        },
-        {
-          "calculate": "'net ' + format(datum.growth_pct, '+.1f') + '%'",
+          "calculate": "datum.industry == 'Transport & delivery' || datum.industry == 'Agriculture' ? 'net ' + format(datum.growth_pct, '+.1f') + '%' : ''",
           "as": "lab"
         }
       ],

@@ -31,14 +31,14 @@ To preview locally, run `python -m http.server` in this folder and open <http://
 | 7 | `07_quarterly` | Line and area chart with brush zoom | Basic | ABS quarterly time series |
 | 8 | `08_waterfall` | Waterfall chart with year selector | Advanced | ABS entries and exits |
 | 9 | `09_industry_heatmap` | Diverging heatmap | Advanced | ABS industry counts 2019 to 2026 |
-| 10 | `10_marimekko` | Marimekko (mosaic) chart | Advanced | ABS industry by size |
+| 10 | `10_marimekko` | 100% stacked bar chart (simplified from a marimekko) | Basic | ABS industry by size |
 | 11 | `11_churn_dumbbell` | Dumbbell chart with year selector | Advanced* | ABS entry and exit rates |
 | 12 | `12_survival` | Highlighted multi-line chart with selector | Basic | ABS survival of 2022-23 entrants |
 | 13 | `13_insolvency_history` | Annotated bar chart | Basic | ASIC 1999 to 2026 |
 | 14 | `14_insolvency_calendar` | Calendar heatmap | Advanced | ASIC monthly |
 | 15 | `15_insolvency_share` | Scatterplot with reference line | Basic | ASIC + ABS combined |
 
-That is 15 charts in total: 11 advanced (including 4 map idioms) and 4 basic. *Ask your tutor whether a dumbbell chart counts as advanced or as a dot plot.
+That is 15 charts in total: 10 advanced (including 4 map idioms) and 5 basic. *Ask your tutor whether a dumbbell chart counts as advanced or as a dot plot.
 
 ## Data sources
 

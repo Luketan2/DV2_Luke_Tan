@@ -14,7 +14,11 @@
       }
     }
   },
-  "width": 460,
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "height": 380,
   "transform": [
     {

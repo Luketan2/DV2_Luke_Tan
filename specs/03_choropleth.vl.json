@@ -44,11 +44,11 @@
       }
     }
   ],
-  "spacing": 14,
+  "spacing": 36,
   "hconcat": [
     {
-      "width": 516,
-      "height": 430,
+      "width": 537,
+      "height": 420,
       "title": {
         "text": "Australia",
         "fontSize": 13,
@@ -201,8 +201,10 @@
       }
     },
     {
+      "spacing": 10,
       "vconcat": [
         {
+          "spacing": 10,
           "hconcat": [
             {
               "title": {
@@ -210,8 +212,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -325,8 +327,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -433,19 +435,15 @@
                   }
                 ]
               }
-            }
-          ]
-        },
-        {
-          "hconcat": [
+            },
             {
               "title": {
                 "text": "Brisbane",
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -559,8 +557,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -671,6 +669,7 @@
           ]
         },
         {
+          "spacing": 10,
           "hconcat": [
             {
               "title": {
@@ -678,8 +677,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -793,8 +792,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -901,19 +900,15 @@
                   }
                 ]
               }
-            }
-          ]
-        },
-        {
-          "hconcat": [
+            },
             {
               "title": {
                 "text": "Hobart",
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [
@@ -1027,8 +1022,8 @@
                 "fontSize": 12,
                 "anchor": "start"
               },
-              "width": 268,
-              "height": 98,
+              "width": 126,
+              "height": 178,
               "projection": {
                 "type": "mercator",
                 "rotate": [

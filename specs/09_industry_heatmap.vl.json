@@ -4,7 +4,11 @@
   "data": {
     "url": "data/industry_annual.csv"
   },
-  "width": 400,
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "height": 400,
   "transform": [
     {

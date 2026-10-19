@@ -1,17 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Proportional symbol map: circles sized by the number of businesses each SA4 region added between June 2023 and June 2025, coloured by percentage growth. Insets zoom into Sydney and Melbourne. Sources: ABS 8165.0 data cube 8 (Tables 1 and 3); ABS ASGS 2021 boundaries.",
-  "spacing": 16,
+  "spacing": 36,
   "resolve": {
     "scale": {
       "color": "shared",
       "size": "shared"
     }
   },
-  "vconcat": [
+  "hconcat": [
     {
-      "width": 500,
-      "height": 340,
+      "width": 538,
+      "height": 380,
       "title": {
         "text": "Australia",
         "fontSize": 13,
@@ -158,6 +158,7 @@
       ]
     },
     {
+      "spacing": 20,
       "hconcat": [
         {
           "title": {
@@ -165,8 +166,8 @@
             "fontSize": 12,
             "anchor": "start"
           },
-          "width": 240,
-          "height": 185,
+          "width": 257,
+          "height": 330,
           "projection": {
             "type": "mercator",
             "rotate": [
@@ -317,8 +318,8 @@
             "fontSize": 12,
             "anchor": "start"
           },
-          "width": 240,
-          "height": 185,
+          "width": 257,
+          "height": 330,
           "projection": {
             "type": "mercator",
             "rotate": [

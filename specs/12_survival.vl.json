@@ -4,7 +4,11 @@
   "data": {
     "url": "data/survival_entries.csv"
   },
-  "width": 380,
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "height": 300,
   "params": [
     {
@@ -65,12 +69,12 @@
       "title": "Still trading (%)",
       "scale": {
         "domain": [
-          30,
+          0,
           100
         ]
       },
       "axis": {
-        "tickCount": 7
+        "tickCount": 5
       }
     },
     "detail": {
